@@ -2,6 +2,10 @@
 
 .section {
   padding: 60px 0;
+
+  &--inverse {
+    background-color: map-get($colors, section-bg);
+  }
 }
 
 .icon {
@@ -13,17 +17,37 @@
   fill: currentColor;
 }
 
-
-// top-banner
-
-.swiper {
-  &-slide {
-    min-height: 700px;
-    background-size: cover;
+.landing-link {
+  font-size: 1.25rem;
+  color: map-get($colors, white-color);
+  padding: 5px 20px;
+  background-color: map-get($colors, secondary);
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s;
+  &:hover {
+    color: map-get($colors, white-color);
+    background-color: darken(map-get($colors, secondary), 10%);
+  }
+  &--inverse {
+    background-color: map-get($colors, primary-btn);
+    &:hover {
+      background-color: darken(map-get($colors, primary-btn), 10%);
+    }
   }
 }
 
+
+// top-banner
+
 .banner {
+  &-wrapper {
+    .swiper-slide {
+      min-height: 700px;
+      background-size: cover;
+    }
+  }
+
   &-heading {
     padding-top: 60px;
     color: map-get($colors, white-color);
@@ -130,5 +154,63 @@
         }
       }
     }
+  }
+  &-footer {
+    background-color: #f3f3f3;
+    padding: 30px;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+// profit section
+
+.profit {
+  &-item {
+    background-color: map-get($grayColors, light-gray);
+    border-radius: 5px;
+  }
+  &-header {
+    padding: 20px;
+    font-size: 0.81rem;
+    text-transform: uppercase;
+    color: #b6b6b6;
+
+    strong {
+      display: block;
+      text-transform: none;
+      font-size: 1.125rem;
+      color: map-get($colors, heading);
+    }
+  }
+  &-img {
+    max-height: 180px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  &-data,
+  &-text {
+    background-color: map-get($colors, white-color);
+    padding: 20px;
+    border-bottom: 1px solid map-get($grayColors, gray-border);
+  }
+  &-text {
+    border: none;
+  }
+  &-footer {
+    padding: 30px;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

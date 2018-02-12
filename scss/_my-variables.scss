@@ -1,11 +1,10 @@
-$font-family-light:               'HelveticaNeueCyr Light', Arial, sans-serif !default;
-$font-family-bold:                     'HelveticaNeueCyr Bold', Arial, sans-serif !default;
-$font-family-black:                    'HelveticaNeueCyr Black', Arial, sans-serif !default;
-$font-family-heavy:                    'HelveticaNeueCyr Heavy', Arial, sans-serif !default;
-$font-family-medium:                   'HelveticaNeueCyr Medium', Arial, sans-serif !default;
-$font-family-roman:                    'HelveticaNeueCyr Roman', Arial, sans-serif !default;
-$font-family-thin:                    'HelveticaNeueCyr Thin', Arial, sans-serif !default;
-
+$font-family-light: 'HelveticaNeueCyr Light', Arial, sans-serif !default;
+$font-family-bold: 'HelveticaNeueCyr Bold', Arial, sans-serif !default;
+$font-family-black: 'HelveticaNeueCyr Black', Arial, sans-serif !default;
+$font-family-heavy: 'HelveticaNeueCyr Heavy', Arial, sans-serif !default;
+$font-family-medium: 'HelveticaNeueCyr Medium', Arial, sans-serif !default;
+$font-family-roman: 'HelveticaNeueCyr Roman', Arial, sans-serif !default;
+$font-family-thin: 'HelveticaNeueCyr Thin', Arial, sans-serif !default;
 
 $colors: (
   primary: #003764,
@@ -16,5 +15,11 @@ $colors: (
   white-color: #fff,
   warning: #ed592b,
   banner-link: #d03505,
-  heading: #0056b8
+  heading: #0056b8,
+  section-bg: #1f9bde
+);
+
+$grayColors: (
+  light-gray: #f3f3f3,
+  gray-border: #eeeeee
 );

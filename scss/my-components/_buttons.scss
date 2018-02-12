@@ -10,7 +10,7 @@
   &:hover,
   &:focus {
     color: #fff;
-    background-color: map-get($colors, primary-btn-hover);
+    background-color: darken(map-get($colors, primary-btn), 10%);
     border-color: map-get($colors, primary-btn-hover);
   }
   &:focus {

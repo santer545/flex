@@ -104,4 +104,8 @@
   font-family: $font-family-roman;
   margin-bottom: 30px;
   color: map-get($colors, heading);
+
+  &--inverse {
+    color: map-get($colors, white-color);
+  }
 }
