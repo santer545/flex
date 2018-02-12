@@ -1,0 +1,134 @@
+// Common
+
+.section {
+  padding: 60px 0;
+}
+
+.icon {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+
+// top-banner
+
+.swiper {
+  &-slide {
+    min-height: 700px;
+    background-size: cover;
+  }
+}
+
+.banner {
+  &-heading {
+    padding-top: 60px;
+    color: map-get($colors, white-color);
+    font-size: 2.18rem;
+    line-height: 2.81rem;
+    font-family: $font-family-roman;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    strong {
+      display: block;
+    }
+  }
+  &-link {
+    color: map-get($colors, white-color);
+    background-color: map-get($colors, warning);
+    display: inline-block;
+    font-size: 1.25rem;
+    font-family: $font-family-medium;
+    padding: 0 20px;
+    height: 55px;
+    line-height: 55px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s;
+
+    &:hover,
+    &:focus {
+      background-color: map-get($colors, banner-link);
+      color: map-get($colors, white-color);
+    }
+  }
+}
+
+// advantages
+
+.advantages {
+  &-header {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    padding: 17px 30px;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+    font-size: 1.31rem;
+    font-family: $font-family-bold;
+  }
+
+  &-icon {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background-color: map-get($colors, secondary);
+    margin-right: 15px;
+    text-align: center;
+    border-radius: 5px;
+    color: map-get($colors, white-color);
+    &--inverse {
+      background-color: map-get($colors, primary-btn);
+    }
+    svg {
+      font-size: 1.5rem;
+    }
+  }
+
+  &-list {
+    margin: 0 -30px;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+  }
+  &-item {
+    padding: 0 30px;
+  }
+  &-inner {
+    min-width: 360px;
+    max-width: 360px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+  }
+
+  &-body {
+    padding: 30px;
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+
+      li {
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        align-items: center;
+        &:not(:last-child) {
+          margin-bottom: 35px;
+        }
+
+        svg {
+          width: 40px;
+          min-width: 40px;
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.btn {
+  border-radius: 3px;
+}
+
+.btn-primary {
+  background-color: map-get($colors, primary-btn);
+  color: map-get($colors, white-color);
+  border-color: map-get($colors, primary-btn);
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: map-get($colors, primary-btn-hover);
+    border-color: map-get($colors, primary-btn-hover);
+  }
+  &:focus {
+    outline: none;
+  }
+}

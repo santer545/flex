@@ -1,0 +1,55 @@
+.header {
+  height: 100px;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  &-left {
+
+  }
+
+  &-right {
+    display: flex;
+    align-items: center;
+  }
+
+  &-language {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 45px;
+    border: 1px solid #dadada;
+    border-radius: 45px;
+    color: map-get($colors, primary);
+    text-decoration: none;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+}
+
+
+.navbar {
+  padding: 0;
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+
+    li {
+      margin: 0 17px;
+      a {
+        display: block;
+        font-size: 16px;
+        font-family: $font-family-medium;
+        text-decoration: none;
+      }
+    }
+  }
+}
