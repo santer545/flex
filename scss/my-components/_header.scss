@@ -1,11 +1,30 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   height: 100px;
+  background-color: #fff;
+  z-index: 21;
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
-  justify-content: space-around;
   align-items: center;
 
+  &_h {
+    height: 100px;
+  }
+
+  &-wrapper {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1200px;
+    margin: 0 auto;
+  }
   &-left {
 
   }
@@ -35,14 +54,16 @@
 
 .navbar {
   padding: 0;
-  ul {
+  > ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
 
-    li {
+    > li {
+      position: relative;
       margin: 0 17px;
       a {
         display: block;
@@ -50,6 +71,33 @@
         font-family: $font-family-medium;
         text-decoration: none;
       }
+      &.custom {
+        a,
+        span {
+          border: 1px dashed #ef5350;
+          color: #ef5350;
+          border-radius: 30px;
+          padding: 5px 23px 5px 7px;
+          background-image: url(../images/icons/menu-star.png);
+          background-position: 90% 7px;
+          background-repeat: no-repeat;
+          line-height: 20px;
+          transition: background-color .3s;
+        }
+      }
+      .dropdown-menu {
+        margin-top: 37px;
+        min-width: 200px;
+        padding: 0;
+        > li {
+          a {
+            padding: 10px 15px;
+          }
+        }
+      }
     }
+  }
+  .overflow-menu {
+    display: none;
   }
 }

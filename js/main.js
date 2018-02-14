@@ -846,25 +846,6 @@ $(document).ready(function() {
 
 
 
-
-
-  if ($(window).width() > 1025) {
-    $('#myAffix').affix({
-      offset: {
-        top: 115
-      }
-    });
-    var xxxx;
-    $('#myAffix').on('affix-top.bs.affix', function() {
-      setTimeout(function() {
-        xxxx = $('.header').outerHeight();
-        $('.header_h').animate({
-          height: xxxx
-        }, 500);
-      }, 1000);
-    });;
-  }
-
   if ($(window).width() > 1025) {
     $(".fixed-bar").stick_in_parent({
       offset_top: 100
@@ -1912,4 +1893,18 @@ function swiper() {
       }
     }
   });
+
+  var swiperReview = new Swiper('.js-main-review', {
+    slidesPerView: 2,
+    spaceBetween: 20,
+    loop: true,
+    breakpoints: {
+      1024: {
+        pagination: {
+          el: '.swiper-pagination',
+        }
+      }
+    }
+  });
+
 }

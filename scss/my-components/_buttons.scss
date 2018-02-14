@@ -1,5 +1,6 @@
 .btn {
   border-radius: 3px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .btn-primary {
@@ -16,4 +17,101 @@
   &:focus {
     outline: none;
   }
+}
+
+
+.btn-authorize {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    background-color: map-get($colors, primary-btn);
+    color: map-get($colors, white-color);
+    vertical-align: top;
+    font-size: 18px;
+    font-family: $font-family-roman;
+    border: 0;
+    border-radius: 3px;
+    padding: 11px 27px 10px 45px;
+    background-image: url(../assets/images/login.svg);
+    background-repeat: no-repeat;
+    background-position: 11px 12px;
+    background-size: 18px;
+    -webkit-transform: perspective(1px) translateZ(0);
+    -ms-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    text-decoration: none;
+
+    &:focus,
+    &:hover {
+        outline: none;
+        text-decoration: none;
+        background-color: darken(map-get($colors, primary-btn), 10%);
+    }
+
+    &--content {
+        width: 37px;
+        height: 46px;
+        padding: 0;
+        font-size: 0;
+        background-size: 16px;
+    }
+    &--get {
+        background-image: none;
+        padding: 11px 10px 10px;
+    }
+
+    &.btn-profile {
+        span {
+            background-image: url("../images/users.svg");
+            background-size: 20px 20px;
+            background-position: 15px 8px;
+        }
+    }
+}
+
+.btn-success {
+  background-color: map-get($colors, secondary);
+
+  &:hover {
+    background-color: darken(map-get($colors, secondary), 10%);
+  }
+}
+
+.btn.btn-outline-primary {
+  font-size: 1.25rem;
+  background-color: hsla(0,0%,100%,.2);
+  border: 1px solid hsla(0,0%,100%,.3);
+  color: map-get($colors, white-color);
+  padding: 8px 20px;
+  border-radius: 5px;
+  text-transform: none;
+  transition: background-color .3s;
+
+  &:hover,
+  &:focus {
+    background-color: hsla(0,0%,100%,.3);
+    color: map-get($colors, white-color);
+  }
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.show>.btn-outline-primary.dropdown-toggle {
+    background-color: hsla(0,0%,100%,.3);
+    color: map-get($colors, white-color);
+    box-shadow: none;
+    border: 1px solid hsla(0,0%,100%,.3);
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus,
+.show>.btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: none;
+  border: 1px solid hsla(0,0%,100%,.3);
 }

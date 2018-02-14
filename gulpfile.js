@@ -74,7 +74,7 @@ return  gulp.src([
            sourceDir + '/jquery.knob.js',
            sourceDir + '/jquery.ui.widget.js',
            sourceDir + '/jquery.iframe-transport.js',
-           sourceDir + '/bootstrap.min.js',
+           sourceDir + '/bootstrap.js',
            sourceDir + '/jquery.placeholder.min.js',
            sourceDir + '/owl.carousel.js',
            sourceDir + '/jcf.js',
