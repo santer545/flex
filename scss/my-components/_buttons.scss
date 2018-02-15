@@ -84,7 +84,6 @@
 }
 
 .btn.btn-outline-primary {
-  font-size: 1.25rem;
   background-color: hsla(0,0%,100%,.2);
   border: 1px solid hsla(0,0%,100%,.3);
   color: map-get($colors, white-color);
@@ -114,4 +113,21 @@
 .show>.btn-outline-primary.dropdown-toggle:focus {
   box-shadow: none;
   border: 1px solid hsla(0,0%,100%,.3);
+}
+
+.btn.btn-outline-info {
+  @extend .btn-outline-primary;
+  background-color: transparent;
+
+  &:hover {
+    border: 1px solid hsla(0,0%,100%,.3);
+  }
+}
+
+.btn-lg {
+  font-size: 1.25rem;
+}
+
+.btn-sm {
+  font-size: 0.875rem;
 }

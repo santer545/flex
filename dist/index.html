@@ -1129,9 +1129,489 @@
       </section>
 
     </main>
+    [[if?&is=`[*id*]:!in:2,3,4,5,7,17,22,33,35,40,87,157,159,573`&then=`
+    <div class="gift-section" id="gift-wr">
+      <div class="gift-right">
+        <img src="assets/images/gift-right.png" alt="">
+      </div>
+      <div class="gift-left">
+        <img src="assets/images/gift-left.png" alt="">
+      </div>
+      <div class="container-fluid">
+        <div class="gift-heading text-center">Еженедельно раздаем подарки. <br> Главный приз - <strong>iPhone 7!</strong></div>
+        <div class="gift-form-holder">
+          [[if?&is=`[+resultContactInfo+]:=:success` &then=`
+          <p id="gifts" class="gift-message">[#1204#]</p>
+          `&else=`
+          <form name="clientContactInfo" id="clientContactInfo" action="[~~[*id*]~~]" method="POST" class="gift-form form js_validate">
+            <div class="form-group">
+
+              <input type="hidden" name="clientContactInfo[Action]" value="WeeklyPromotion">
+
+              <label for="gift-name" class="form-label form-label--gift">[#34#]</label>
+              <input type="text" name="clientContactInfo[Name]" id="gift-name" class="form-control" data-validate="cyrilic" required>
+              <div class="error_text alert alert-danger">[#484#]</div>
+            </div>
+            <div class="form-group">
+              <label for="gift-email" class="form-label form-label--gift">Email</label>
+              <input type="email" name="clientContactInfo[Email]" id="gift-email" class="form-control" data-validate="email" required>
+              <div class="error_text alert alert-danger">[#1356#]</div>
+            </div>
+            <div class="form-group">
+              <label for="gift-phone" class="form-label form-label--gift">[#192#]</label>
+              <input type="tel" name="clientContactInfo[Phone]" id="gift-phone" class="form-control" onKeyUp="onKeyUpPhone('gift-phone');" data-validate="phone" required placeholder="(___) ___-__-__">
+              <div class="error_text alert alert-danger">[#635#]</div>
+            </div>
+            <div class="form-group">
+              <button type="button" class="btn btn-success" onclick="if (validate($(this).parents('.js_validate'))) onClickSubmitContactInfo();">[#1291#]</button>
+            </div>
+          </form>
+          `]]
+        </div>
+        <div class="text-center gift-detail">
+          <a href="[~~570~~]">[#850#]</a>
+        </div>
+      </div>
+    </div>
+    `]]
+
     <footer class="footer">
 
+      <div class="footer-top">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <p class="footer-heading">[#234#]</p>
+              <div class="footer-menu--wr" id="js-footer-menu-three">
+                [[Wayfinder?&startId=`25`&level='1'&outerClass='footer-menu' &hereTpl=`tpl_wf_here`&rowTpl=`tpl_wf_row_footer`]]
+              </div>
+            </div>
+            <div class="col">
+              <p class="footer-heading">[#235#]</p>
+              <div class="footer-menu--wr" id="js-footer-menu-four">
+                <ul class="footer-menu">
+                  <li class="footer-menu-item"><a href="[~~495~~]" class="footer-menu-link js-hash" alt="[#236#]?" title="[#236#]?">[#1440#]?</a></li>
+                  <li class="footer-menu-item"><a href="[~~10~~]#questions_75" class="footer-menu-link js-hash" alt="[#238#]" title="[#238#]">[#238#]</a></li>
+                  <li class="footer-menu-item"><a href="[~~10~~]#question_82" class="footer-menu-link js-hash" alt="[#239#]" title="[#239#]">[#239#]</a></li>
+                  <li class="footer-menu-item"><a href="[~~179~~]" class="footer-menu-link js-hash" alt="[#179#]" title="[#179#]">Блог</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col">
+              <p class="footer-heading">[#233#]</p>
+              <div class="footer-menu--wr" id="js-footer-menu-two">
+                [[Wayfinder?&startId=`11`&level='1'&outerClass='footer-menu' &hereTpl=`tpl_wf_here`&rowTpl=`tpl_wf_row_footer`]]
+              </div>
+            </div>
+            <div class="col">
+              <div class="footer-phone">
+                <a class="phone-city" href="tel:0800214111">0 800 214 111</a><br><span>[#257#]</span><br><a href="tel:0733694111">
+                  <svg class="icon icon-life-cell"><use xlink:href="#icon-life-cell"></use></svg>
+                  073 369 41 11</a>
+                <a href="tel:0673694111">
+                  <svg class="icon icon-kiyvstar"><use xlink:href="#icon-kiyvstar"></use></svg>
+                    067 369 41 11</a>
+                <a href="tel:0503694111">
+                  <svg class="icon icon-mts"><use xlink:href="#icon-mts"></use></svg>
+                  050 369 41 11</a>
+                <div class="callback-holder">
+                  <button class="btn btn-outline-info">Написать нам</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p class="footer-heading"><a role="button" data-toggle="collapse" href="#js-footer-menu-one" aria-expanded="false" aria-controls="js-footer-menu-one">[#858#]</a></p>
+              <div class="footer-menu--wr footer-menu-service" id="js-footer-menu-one">
+                [[-- [[Wayfinder?&startId=`120`&level='1'&outerClass='footer-menu' &hereTpl=`tpl_wf_here`&rowTpl=`tpl_wf_row_footer`]] --]] [[columnsSEO?&startId=`120`&level='1'&outerClass='footer-menu' &hereTpl=`tpl_wf_here`&rowTpl=`tpl_wf_row_footer`&excludeDocs=`160,161,162,163,166,171,173`]]
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-2">
+              <a [[if?&is=`[*id*]:=:1`&then=``&else=`href="[~~1~~]" `]] class="footer-logo">
+								[!if?&is=`[(lang)]:=:ru`&then=`
+								<img src="/assets/images/logo_last_white.svg" alt="" width="250" height="90">
+								`!]
+								[!if?&is=`[(lang)]:=:ua`&then=`
+								<img src="/assets/images/logo_last_UKR_white.svg" alt="" width="250" height="90">
+								`!]
+							</a>
+            </div>
+            <div class="col-md-6">
+              <p class="footer-text">[#240#] [#241#]. © 2015 - 2018 MyCredit - [#823#] <br><br> [#1304#] <a target="_blank" href="https://artjoker.ua/ru/">Artjoker</a></p>
+            </div>
+            <div class="col-md-4">
+              <div class="social-wrapper">
+                <ul class="social" itemscope itemtype="http://schema.org/Organization">
+                  <link itemprop="url" href="[(site_url)]">
+                  <li class="social-item tg">
+                    <a itemprop="sameAs" href="https://t.me/MyCreditua" target="_blank" class="social-link">
+											<svg class="icon icon-telegramm"><use xlink:href="#icon-telegramm"></use></svg>
+										</a>
+                  </li>
+                  <li class="social-item vk">
+                    <a itemprop="sameAs" href="https://vk.com/mycreditua" target="_blank" class="social-link vk">
+											<svg class="icon icon-vk-social-network-logo"><use xlink:href="#icon-vk-social-network-logo"></use></svg>
+										</a>
+                  </li>
+                  <li class="social-item">
+                    <a itemprop="sameAs" href="https://www.facebook.com/Mycredit-1024366047631998/" target="_blank" class="social-link facebook">
+											<svg class="icon icon-facebook-logo"><use xlink:href="#icon-facebook-logo"></use></svg>
+										</a>
+                  </li>
+                  <li class="social-item">
+                    <a itemprop="sameAs" href="https://www.instagram.com/my_credit/" class="social-link instagramm" target="_blank">
+                      <svg class="icon icon-instagram-logo"><use xlink:href="#icon-instagram-logo"></use></svg>
+                    </a>
+                  </li>
+                  <li class="social-item">
+                    <a itemprop="sameAs" href="https://www.youtube.com/c/MyCreditComUa" target="_blank" class="social-link youtube">
+											<svg class="icon icon-youtube-logo"><use xlink:href="#icon-youtube-logo"></use></svg>
+										</a>
+                  </li>
+                  <li class="social-item">
+                    <a itemprop="sameAs" href="https://plus.google.com/u/0/+MyCreditComUa" target="_blank" class="social-link google">
+											<svg class="icon icon-google-plus-logo"><use xlink:href="#icon-google-plus-logo"></use></svg>
+										</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="bottom-callback bottom-call-hidden" id="div_SendEmail">
+
+                <div class="container-fluid">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="onClickCloseEmail();"></button>
+                  <div class="row">
+                    <div class="col-md-7">
+
+                      <figure class="call-img">
+                        <img src="assets/images/operator.png" alt="">
+                      </figure>
+                      <div class="call-img--name">
+                        [#997#] Кондрашова <span>[#996#]</span>
+                      </div>
+                      <div class="call-text">
+                        <img src="images/quot.png" alt=""> У вас есть вопрос по оформлению займа в MyCredit? <strong>Напишите нам, мы поможем его решить!</strong>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="callback-form">
+                        <form name="sendMail" id="sendMail" action="[~~9~~]" method="POST" class="form js_validate" onclick="onClickFormSendMail();">
+                          <div class="form-group">
+                            <div class="form-control--wr">
+                              <label for="" class="form-label">ФИО</label>
+                              <input type="text" class="form-control" id="send_sername" name="sendMail[sername]" required>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="form-control--wr">
+                              <label for="" class="form-label">Email</label>
+                              <input type="email" class="form-control" id="send_email" name="sendMail[email]" required data-validate="email" onKeyUp="onKeyUpToEnter('email', event);">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="form-control--wr">
+                              <label for="" class="form-label">Сообщение</label>
+                              <textarea name="sendMail[message]" id="message" class="write-us form-control" required></textarea>
+                            </div>
+                          </div>
+                          <button type="button" class="btn btn-personal btn-sm" onclick="if (validate($(this).parents('.js_validate'))) onClickSendEmail();">
+														[#8#]
+													</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="div_resultEmail" class="form-group hidden callback-result">
+                  <span id="span_resultEmail">[#291#]</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      [[if?&is=`[*auth*]:empty:and:[*id*]:!in:2,4,5,7,17,22,33,35,40,87,157,159`&then=`
+      <a href="[~~495~~]" class="how-widget">
+		<span class="how-widget-q">?</span>
+		<span class="how-widget-t active">[#236#]?</span>
+	</a> `]]
     </footer>
+
+
+
+    <!-- gift popup -->
+    [[if?&is=`[+resultContactInfo+]:=:success` &then=`
+    <div class="modal fade thanks-modal" tabindex="-1" role="dialog" id="gift-popup">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+          <div class="modal-body">
+            <p>[#1204#]</p>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    `]] [[if?&is=`[*auth*]:!empty:and:[*id*]:!in:1,2,4,5,7,17,22,33,35,40,87,149,157,159,281,491,492`&then=`
+    <div class="share-popup" id="share-1">
+      <button class="btn-user-close"></button>
+      <img src="assets/images/popup-small-1.png">
+      <img src="assets/images/popup-small-1-share[[if?&is=`[(lang)]:=:ua`&then=`-UKR`]].png" class="popup-share-img">
+      <div class="popup-share-text text-center">[#1148#] <br> <strong>"[#1149#]"</strong></div>
+      <a class="btn btn-personal" href="[~~4~~]">[#1214#]</a>
+    </div>
+    `]] [[if?&is=`[*auth*]:empty:and:[*id*]:!in:1,2,4,5,7,17,22,33,35,40,87,149,157,159,173,491,492`&then=`
+    <div class="share-popup" id="share-2">
+      <button class="btn-user-close"></button>
+      <img src="assets/images/popup-small-1-1.png">
+      <div class="popup-share-zero text-center">[#1363#] <span class="zero">0</span><span class="percent">%*</span> [#1364#]</div>
+      <a class="btn btn-personal" href="[~~17~~]">[#1001#]</a>
+    </div>
+    `]]
+
+
+    <div class=" [[if?&is=`[*TKLenderActive*]:!=:1`&then=`hidden`]]">
+
+      <div class="info-user" id="item-1">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1026#]
+      </div>
+
+      <div class="info-user" id="item-2">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1027#]
+      </div>
+
+      <div class="info-user" id="item-3">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1028#]
+      </div>
+
+      <div class="info-user" id="item-4">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1029#]
+      </div>
+
+      <div class="info-user" id="item-5">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1030#]
+      </div>
+
+
+      <div class="info-user" id="item-6">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1031#]
+      </div>
+
+
+      <div class="info-user" id="item-7">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1032#]
+      </div>
+
+
+      <div class="info-user" id="item-8">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1033#]
+      </div>
+
+
+      <div class="info-user" id="item-9">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1034#]
+      </div>
+
+
+      <div class="info-user" id="item-10">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1035#]
+      </div>
+
+
+      <div class="info-user" id="item-11">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1036#]
+      </div>
+
+
+      <div class="info-user" id="item-12">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1037#]
+      </div>
+
+
+      <div class="info-user" id="item-13">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1038#]
+      </div>
+
+      <div class="info-user" id="item-14">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1039#]
+      </div>
+
+      <div class="info-user" id="item-15">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1040#]
+      </div>
+
+      <div class="info-user" id="item-16">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1041#]
+      </div>
+
+      <div class="info-user" id="item-17">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1042#]
+      </div>
+
+      <div class="info-user" id="item-18">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1043#]
+      </div>
+
+      <div class="info-user" id="item-19">
+        <button class="btn-user-close"></button>
+        <div class="info-user-img">
+          <img src="assets/images/visa.png" alt="">
+          <img src="assets/images/master.png" alt="">
+        </div>
+
+        [#1044#]
+      </div>
+    </div>
+
+    [[if?&is=`[*auth*]:empty`&then=`
+    <!-- promo modal -->
+    <div class="modal fade close-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="promocodePopup">
+      <div class="modal-dialog modal-sm" role="document">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <div class="modal-content">
+          <div class="heading-h2">
+            <strong>[#1372#]</strong> <br><br> [#1373#]:
+          </div>
+          <div>Ваш промокод:
+            <div class="promocode">MyUpstart</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    `]]
+
+    <div class="modal fade bs-example-modal-sm thanks-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="thanks">
+      <div class="modal-dialog modal-sm" role="document">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <div class="modal-content">
+          [#1478#]. <br> [#1479#]!
+        </div>
+      </div>
+    </div>
+    <a href="#" id="back-to-top" class="back-to-top js-back-to-top" title="Back to top"></a>
+
+
+
   </div>
   <script src="js/all.min.js"></script>
 </body>

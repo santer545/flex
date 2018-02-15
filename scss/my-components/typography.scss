@@ -95,6 +95,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+svg {
+  fill: currentColor;
+  display: inline-block;
+}
 
 
 

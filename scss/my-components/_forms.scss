@@ -48,3 +48,13 @@
 .alert {
   font-size: 0.8rem;
 }
+
+.error_text {
+  display: none;
+}
+
+.has-error {
+  .error_text {
+    display: block;
+  }
+}
