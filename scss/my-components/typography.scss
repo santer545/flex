@@ -119,6 +119,11 @@ h1 {
   margin-bottom: 30px;
   color: map-get($colors, heading);
 
+  @include media-breakpoint-down(md) {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
   &--inverse {
     color: map-get($colors, white-color);
   }
@@ -137,6 +142,14 @@ h1 {
   margin-bottom: 40px;
   line-height: 2.5rem;
   color: map-get($colors, white-color);
+
+  @include media-breakpoint-down(sm) {
+    display: none;
+  }
+
+  @include media-breakpoint-down(xs) {
+    display: none;
+  }
 }
 
 .small-heading {

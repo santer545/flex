@@ -12,8 +12,25 @@
   display: flex;
   align-items: center;
 
+  @include media-breakpoint-down(lg) {
+    height: 80px;
+  }
+
+  @include media-breakpoint-down(sm) {
+    height: 60px;
+    position: relative;
+  }
+
   &_h {
     height: 100px;
+
+    @include media-breakpoint-down(lg) {
+      height: 80px;
+    }
+
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
   }
 
   &-wrapper {
@@ -26,12 +43,30 @@
     margin: 0 auto;
   }
   &-left {
+    @include media-breakpoint-down(lg) {
+      padding-left: 15px;
+      max-width: 20%;
+    }
+
+    @include media-breakpoint-down(sm) {
+      max-width: 40%;
+      padding-left: 10px;
+    }
 
   }
 
   &-right {
     display: flex;
     align-items: center;
+
+    @include media-breakpoint-down(lg) {
+      padding-right: 15px;
+    }
+
+    @include media-breakpoint-down(sm) {
+      padding-right: 10px;
+    }
+
   }
 
   &-language {
@@ -48,12 +83,27 @@
     text-decoration: none;
     margin-left: 10px;
     cursor: pointer;
+
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
   }
 }
 
 
 .navbar {
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include media-breakpoint-down(sm) {
+    display: block;
+    position: fixed;
+    right: -100%;
+    top: 0;
+  }
+
   > ul {
     list-style-type: none;
     padding: 0;
@@ -62,14 +112,31 @@
     justify-content: center;
     align-items: center;
 
+    @include media-breakpoint-down(sm) {
+      display: block;
+    }
+
     > li {
       position: relative;
       margin: 0 17px;
+      @include media-breakpoint-down(sm) {
+        margin: 0 0 20px;
+      }
+
+      @include media-breakpoint-down(md) {
+        margin: 0 10px;
+      }
+
       a {
         display: block;
-        font-size: 16px;
+        font-size: 1rem;
         font-family: $font-family-medium;
         text-decoration: none;
+
+        @include media-breakpoint-down(lg) {
+          white-space: nowrap;
+        }
+
       }
       &.custom {
         a,
@@ -89,6 +156,10 @@
         margin-top: 37px;
         min-width: 200px;
         padding: 0;
+
+        @include media-breakpoint-down(lg) {
+          margin-top: 27px;
+        }
         > li {
           a {
             padding: 10px 15px;
@@ -99,5 +170,55 @@
   }
   .overflow-menu {
     display: none;
+    height: 18px;
+
+    .more-menu {
+      margin: 0;
+    }
+
+    .dropdown-menu {
+      @include media-breakpoint-down(lg) {
+        margin-top: 21px;
+      }
+    }
+
+    svg {
+      width: 25px;
+      height: 20px;
+    }
+
+    .dropdown-toggle:after {
+      display: none;
+    }
+
+    @media (min-width: 767px) and (max-width: 1025px) {
+      display: block;
+    }
+  }
+}
+
+.navbar-toggle {
+  float: right;
+  height: auto;
+  margin-right: 0;
+  margin-left: 0;
+  padding: 0;
+  display: none;
+  background-color: #4281ca;
+  height: 45px;
+  line-height: 60px;
+  text-align: center;
+  width: 50px;
+  border-radius: 5px;
+  margin-left: 10px;
+  border: none;
+
+  svg {
+    width: 35px;
+    height: 25px;
+  }
+
+  @include media-breakpoint-down(sm) {
+    display: block;
   }
 }

@@ -47,6 +47,14 @@
     transition-duration: 0.3s;
     text-decoration: none;
 
+    @include media-breakpoint-down(sm) {
+      font-size: 0;
+      width: 40px;
+      height: 45px;
+      padding: 0;
+    }
+
+
     &:focus,
     &:hover {
         outline: none;

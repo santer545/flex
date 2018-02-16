@@ -1,0 +1,13 @@
+// media queries
+
+@mixin desctop {
+  @media screen and (max-width: 1700px) {
+    @content;
+  }
+}
+
+@mixin big-laptop {
+  @media screen and (max-width: 1440px) {
+    @content;
+  }
+}
