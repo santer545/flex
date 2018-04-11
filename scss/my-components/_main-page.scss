@@ -334,7 +334,6 @@
 
     &--wrapper {
       @include clearfix;
-      margin-bottom: 10px;
 
       @include media-breakpoint-down(xs) {
         width: 33.333%;
@@ -406,11 +405,6 @@
       @include media-breakpoint-down(xs) {
         display: none;
       }
-    }
-  }
-  &-buttons {
-    .btn {
-      width: 100%;
     }
   }
 }

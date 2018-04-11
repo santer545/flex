@@ -1,9 +1,13 @@
+@import "_my-mixins.scss";
+@import "_my-variables.scss";
+
 @import "plugins/bootstrap/bootstrap.scss";
 @import "plugins/swiper/swiper.scss";
 @import "plugins/calculator/_bootstrap-slider.scss";
 @import "plugins/custom-scroll/_custom-scroll.scss";
-@import "_my-mixins.scss";
-@import "_my-variables.scss";
+@import "plugins/custom-select/_bootstrap-select.scss";
+@import "plugins/image-slider/_image-slider.scss";
+
 
 @import "my-components/default.scss";
 @import "my-components/buttons.scss";
@@ -14,4 +18,8 @@
 @import "my-components/nav.scss";
 @import "my-components/typography.scss";
 @import "my-components/content.scss";
+@import "my-components/faq.scss";
+@import "my-components/news.scss";
+@import "my-components/modals.scss";
 @import "my-components/main-page.scss";
+@import "my-components/registration.scss";

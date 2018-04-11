@@ -4,7 +4,8 @@
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "popper.js": "^1.12.9"
   },
   "devDependencies": {
     "browser-sync": "^2.23.6",

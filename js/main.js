@@ -1,4 +1,9 @@
 $(document).ready(function() {
+
+  $('.js-seo').jScrollPane({
+    arrowScrollOnHover: true
+  });
+  
   mobileMenuClose();
   faqAnchor();
   prolongationBlockAnimate();
@@ -8,6 +13,7 @@ $(document).ready(function() {
   hearts();
   wishMusic();
   swiper();
+  formTooltipShow();
   //customInput();
 
   // Detect ios 11_0_x affected
@@ -844,12 +850,12 @@ $(document).ready(function() {
   var sidebarHeight = wHeight - hHeight;
   var howHeight = $('.js-how').outerHeight();
 
-
+  $(".fixed-bar").stick_in_parent({
+    offset_top: 100
+  })
 
   if ($(window).width() > 1025) {
-    $(".fixed-bar").stick_in_parent({
-      offset_top: 100
-    })
+
   }
 
 
@@ -889,46 +895,8 @@ if ($('.js-back-to-top').length) {
     }, 700);
   });
 }
-$(document).ready(function() {
-  $('.numbers').viewportChecker({
-    classToAdd: 'animated',
-    offset: 100
-  });
-  $('.terminal-wrapper').viewportChecker({
-    classToAdd: 'animated',
-    offset: 100
-  });
-  $('.advantages').viewportChecker({
-    classToAdd: 'animated',
-    offset: 100
-  });
-  $('.how-it-work').viewportChecker({
-    classToAdd: 'animated',
-    offset: 100
-  });
-  $('.city-images').viewportChecker({
-    classToAdd: 'animated',
-    offset: 100
-  });
-  $('.city-modes').viewportChecker({
-    classToAdd: 'animated',
-    offset: 100
-  });
-  $('.banks').viewportChecker({
-    classToAdd: 'animated',
-    offset: 100
-  });
-  $('.container-security').viewportChecker({
-    classToAdd: 'animated',
-    offset: 100
-  });
 
 
-
-
-  // snap svg form map markers
-
-});
 $('input.form-capitalize').keyup(function() {
   var firstLetter = document.querySelectorAll('input.form-capitalize');
   for (i = 0; i < firstLetter.length; i++) {
@@ -939,17 +907,12 @@ $('input.form-capitalize').keyup(function() {
     }
   }
 })
-$('.fixed-bar').width($('.col-lg-3').width());
-$(window).resize(function() {
-  $('.fixed-bar').width($('.col-lg-3').width());
-});
+
 
 
 
 $(document).ready(function() {
-  $('.js-seo').jScrollPane({
-    arrowScrollOnHover: true
-  });
+
   /*if ($(window).width() < 767) {
       $('.envelop-letter').jScrollPane({
           arrowScrollOnHover: true
@@ -1898,4 +1861,18 @@ function swiper() {
     }
   });
 
+}
+
+
+function formTooltipShow() {
+  $('.help-tooltip-data').hide();
+  var iconHover = $('.form-info');
+
+  iconHover.mouseenter(function() {
+    $(this).closest('.form-group').find('.help-tooltip-data').fadeIn('fast');
+  });
+
+  iconHover.mouseleave(function() {
+    $(this).closest('.form-group').find('.help-tooltip-data').fadeOut('fast');
+  });
 }

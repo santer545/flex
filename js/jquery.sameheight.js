@@ -7,12 +7,7 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 })
 
 function initSameHeight() {
-    jQuery('.contact-list').sameHeight({
-        elements: '.contact-item',
-        flexible: true,
-        multiLine: true,
-        biggestHeight: true
-    });
+
     jQuery('div.modal-list').sameHeight({
         elements: 'div.modal-item',
         flexible: true,
@@ -33,12 +28,6 @@ function initSameHeight() {
     });
     jQuery('ul.advantages-list').sameHeight({
         elements: 'li.advantages-item',
-        flexible: true,
-        multiLine: true,
-        biggestHeight: true
-    });
-    jQuery('ul.nav-tabs').sameHeight({
-        elements: 'li.documents-item',
         flexible: true,
         multiLine: true,
         biggestHeight: true
@@ -87,7 +76,7 @@ function initSameHeight() {
         biggestHeight: false
     });
 
-    
+
 
     jQuery('.nav-tabs--data').sameHeight({
         elements: '.nav-tabs--data li a',
@@ -123,7 +112,7 @@ function initSameHeight() {
         biggestHeight: false
     });
 
-    
+
 };
 (function($) {
     $.fn.sameHeight = function(opt) {

@@ -4,10 +4,6 @@ html {
   @include media-breakpoint-down(lg) {
     font-size: 14px;
   }
-
-  @include media-breakpoint-down(sm) {
-    font-size: 12px;
-  }
 }
 
 body,
@@ -16,10 +12,14 @@ html {
 }
 
 body {
-  background-color: #fff;
+  background-color: #eceff9;
   font-family: $font-family-light;
   font-size: 1rem;
   color: map-get($colors, primary);
+
+  &.home-page {
+    background-color: map-get($colors, white-color);
+  }
 }
 
 a {
@@ -39,6 +39,10 @@ img {
 
 strong {
   font-family: $font-family-bold;
+}
+
+.hidden {
+  display: none !important;
 }
 
 .wrapper {

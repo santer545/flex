@@ -1,0 +1,1694 @@
+{{HEAD}}
+
+<div class="wrapper new-main">
+{{HEADER}}
+<div class="contacts">
+  <div class="container-fluid">
+
+
+    <div class="registration-first [[if?&is=`[+flagForm+]:in:0,1` &then=`` &else=`hidden`]]">
+      <div class="row">
+        <div class="col-md-8">
+              <form id="js-form-1" name="js-form-1" action="[~~17~~]" method="post" class="form js_validate" onSubmit="return false;">
+                <div class="heading-h2">[#602#] в MyCredit</div>
+                <p [[if?&is=`[+flagForm+]:=:0:and:[*codeReg*]:empty` &then=`` &else=`hidden`]]>[#1173#]. <br> [#1174#].
+                </p>
+                <div class="row form-group">
+                  <div class="col-md-6">
+                    <label class="form-label form-label--default" for="">[#1175#]</label>
+                    <input name="reg[flagForm]" id="flagForm" type="hidden" value="[+flagForm+]">
+                    <input name="reg[codeReg]" id="regCodereg" type="hidden" value="[*codeReg*]">
+                    <input name="reg[phone]" id="phone" type="tel" class="form-control js-operator-number" data-validate="phone" value="[*phone*]" placeholder="+380 xx xxx-xx-xx" onKeyUp="onKeyUpPhone('phone');" [[if?&is=`[+isCustomerExists+]:=:1` &then=`disabled`]] [[if?&is=`[+flagForm+]:=:0`
+                      &then=`` &else=`readonly`]] [[if?&is=`[+flagForm+]:=:0:and:[*codeReg*]:empty` &then=`` &else=`readonly`]] required>
+
+                    <span class="error_text">[#489#]</span>
+                    <span class="error-text">[!api_error?&nameRes='res1'!]</span>
+                  </div>
+                </div>
+
+                <div id="div_captcha" class="captcha-wrapper form-group [[if?&is=`[+flagForm+]:=:0:and:[*codeReg*]:empty` &then=`` &else=`hidden`]]">
+
+                  <div class="captcha-wrapper">
+                    [[--
+                    <div class="g-recaptcha" data-sitekey="[*ReCaptcha_sitekey*]" data-callback="onReCaptchaVerify" data-expired-callback="onReCaptchaExpired"></div> --]]
+                    <span id="errorCaptcha" class="error-text hidden">[#897#]</span>
+                    <div class="btn-wr--inline btn-wr--captcha">
+                      <span class="help-block hidden">
+												[[if?&is=`[*codeReg*]:empty` &then=`` &else=`[#681#].`]]
+											</span>
+                      <span class="error-text [[if?&is=`[+isCustomerExists+]:=:1` &then=`hidden`]]">[!api_error!]</span> [[if?&is=`[*ReCaptcha_enabled*]:=:1` &then=`
+                      <button id="buttonGetCode" type="button" class="g-recaptcha btn btn-personal btn-sm [[if?&is=`[+isCustomerExists+]:=:1` &then=`hidden`]]" data-sitekey="[*ReCaptcha_sitekey*]" data-callback="onReCaptchaVerify" onclick='onClickGetCode();'>
+												[#606#]
+											</button> ` &else=`
+                      <input name="reg[g-recaptcha-response]" id="g-recaptcha-response" type="hidden" value="1">
+                      <button id="buttonGetCode" type="button" class="btn btn-personal btn-sm [[if?&is=`[+isCustomerExists+]:=:1` &then=`hidden`]]" onclick='onReCaptchaVerify();'>
+												[#606#]
+											</button> `]]
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group [[if?&is=`[+flagForm+]:!in:0,1:or:[*codeReg*]:empty` &then=`hidden`]]">
+                  <div class="form-info">
+                    <img src="assets/images/ico-question.svg" alt="">
+                  </div>
+                  <div class="help-tooltip-data">[#449#]</div>
+                  <label for="email" class="form-label">[#29#]</label>
+                  <div class="form-control--wr">
+                    <input name="reg[email]" id="email" type="email" value="[*email*]" class="form-control" required data-validate="email" autocomplete="off" placeholder="test@gmail.com" [[if?&is=`[*codeReg*]:empty` &then=`disabled`]]>
+                    <span class="error_text">[#490#]</span>
+                  </div>
+                </div>
+
+                <div class="form-group [[if?&is=`[+flagForm+]:!in:0,1:or:[*codeReg*]:empty` &then=`hidden`]]">
+                  <div class="form-info">
+                    <img src="assets/images/ico-question.svg" alt="">
+                  </div>
+                  <div class="help-tooltip-data">[#1350#]</div>
+                  <label for="facebook" class="form-label form-capitalize">[#1351#] Facebook:</label>
+                  <div class="form-control--wr">
+                    <div class="personal-table-holder">
+                      <input id="facebook" name="reg2[facebook]" type="text" value="[*FacebookUrl*]" class="form-control " placeholder="https://www.facebook.com/ivanovivan">
+                      <span class="error_text">[#1350#]</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group [[if?&is=`[+flagForm+]:!in:0,1:or:[*codeReg*]:empty` &then=`hidden`]]">
+
+                  <div class="form-info">
+                    <img src="assets/images/ico-question.svg" alt="">
+                  </div>
+                  <div class="help-tooltip-data">[#480#]</div>
+                  <label for="password" class="form-label">[#195#]</label>
+                  <div class="form-control--wr">
+                    <div class="personal-table-holder personal-table-holder--small">
+                      <input name="reg[password]" id="password" type="password" value="[*password*]" class="form-control" data-validate="pass" autocomplete="false" placeholder="[#614#]" autocomplete="off" [[if?&is=`[+flagForm+]:=:0` &then=`required`]] [[if?&is=`[*codeReg*]:empty`
+                        &then=`disabled`]]>
+                      <div class="form-small-heading">[#1487#]:</div>
+                      <ul class="password-list [[if?&is=`[+flagForm+]:!in:0,1:or:[*codeReg*]:empty` &then=`hidden`]]">
+                        <li id="count_letter">[#1484#]</li>
+                        <li id="big_letter">[#1482#]</li>
+                        <li id="small_letter">[#1483#]</li>
+                        <li id="number_symbol">[#1485#]</li>
+                      </ul>
+                      <span class="error_text">[#480#]</span>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="form-group [[if?&is=`[+flagForm+]:!in:0,1:or:[*codeReg*]:empty` &then=`hidden`]]">
+                  <div class="form-info">
+                    <img src="assets/images/ico-question.svg" alt="">
+                  </div>
+                  <div class="help-tooltip-data">[#481#]</div>
+                  <label for="repeat-password" class="form-label">[#197#]</label>
+                  <div class="form-control--wr">
+                    <div class="personal-table-holder personal-table-holder--small">
+                      <input name="reg[password2]" id="repeat-password" type="password" value="[*password2*]" class="form-control" data-validate="pass" autocomplete="off" placeholder="[#615#]" autocomplete="off" [[if?&is=`[+flagForm+]:=:0` &then=`required`]] [[if?&is=`[*codeReg*]:empty`
+                        &then=`disabled`]]>
+                      <span class="error-text">[!api_error!]</span>
+
+                      <span class="error_text">[#481#]</span>
+                    </div>
+                  </div>
+                </div>
+
+                [[if?&is=`[*codeReg*]:empty` &then=``&else=`
+                <hr>
+                <a role="button" class="" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">[#1176#]?</a>
+                <hr> `]]
+
+                <div class="collapse" id="collapseExample">
+                  <div class="form-group [[if?&is=`[+flagForm+]:!in:0,1:or:[*codeReg*]:empty` &then=`hidden`]]">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#875#]. [#876#]</div>
+                    <label for="PromoCode" class="form-label">[#875#]</label>
+                    <div class="form-control--wr">
+                      <input name="reg[PromoCode]" id="PromoCode" type="text" value="[*PromoCode*]" class="form-control" data-validate="" autocomplete="off" placeholder="[#877#]" [[if?&is=`[*codeReg*]:empty` &then=`disabled`]]>
+
+
+                      <span class="error_text">[#875#]. [#876#]</span>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <button type="button" class="btn btn-success js-btn-success btn-success-arrow [[if?&is=`[*codeReg*]:empty` &then=`hidden`]]" onclick='if (validate($(this).parents(".js_validate"))) onClickSubmitReg("js-form-1", "");' [[if?&is=`[*codeReg*]:empty` &then=`disabled`]]>[#198#]
+								</button>
+
+              </form>
+
+              <form id="js-form-1-1" name="js-form-1-1" action="[~~17~~]" method="post" class="form js_validate" onSubmit="return false;">
+                <div id="div_code" class="hidden">
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      [[if?&is=`[*codeReg*]:empty` &then=`
+                      <label class="form-label form-label--default" for="sms-code">[#611#]:</label>
+                      <input type="hidden" id="sms-phone" name="codeReg[phone]">
+                      <input type="text" class="form-control form-control--code" id="sms-code" name="codeReg[code]" placeholder="_ _ _  _ _ _"> [[-- <span class="error-text">[!api_error!]</span> --]] `]]
+                    </div>
+                  </div>
+                  <p class="no-code">[#1496#] <a>[#1497#]</a></p>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-success js-btn-success btn-success-arrow" onclick='onClickSubmitReg("js-form-1-1", "fb");'>[#1177#]
+										</button>
+                  </div>
+                  <a class="another-number js_AnotherNumber">[#1178#]</a>
+                </div>
+              </form>
+
+              <form id="js-form-1-2" name="js-form-1-2" action="[~~17~~]" method="post" class="form js_validate" onSubmit="return false;">
+                <div id="div_auth" class="[[if?&is=`[+isCustomerExists+]:=:1` &then=``&else=`hidden`]]">
+                  <div class="row">
+                    <div class="col-md-10">
+                      <div class="registration-h1 registration-h1--inverse">[#1179#] в MyCredit!</div>
+                      <input name="auth[login]" id="login" type="hidden" value="[*phone*]">
+                      <label for="password-1" class="form-label form-label--default">[#1180#]:</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+
+                      <input name="auth[password]" id="password-1" type="password" class="form-control" required placeholder="Пароль" autocomplete="off">
+
+                    </div>
+                    <div class="col-md-6">
+                      <a class="forgot-password" href="[~~23~~]">[#213#]?</a>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-lk-enter btn-success js-btn-success btn-success-arrow" onclick='onClickSubmitReg("js-form-1-2", "");'>[#214#] в [#24#]
+										</button>
+                  </div>
+                  <hr>
+                  <a class="js_AnotherNumber another-number">[#1178#]</a>
+                </div>
+              </form>
+
+
+
+        </div>
+        <div class="col-md-4">
+          <div class="counter">
+            <div class="counter-wr">
+              <span class="counter-item counter-item-4">[*requestCounter_4*]</span>
+              <span class="counter-item counter-item-3">[*requestCounter_3*]</span>
+              <span class="counter-item counter-item-2">[*requestCounter_2*]</span>
+              <span class="counter-item counter-item-1">[*requestCounter_1*]</span>
+            </div>
+            [#1072#]
+          </div>
+          <div class="registration-video">
+							<div class="iframe-relative">
+								<img src="images/kakpoluchitodobrenie.jpg" alt="myCredit-video" class="numbers-gif">
+								<div class="numbers-play text-center" id="numbers-play-1">
+									<div class="numbers-play--holder">
+										<img src="assets/images/issue-play.svg" width="98" height="98" alt="">
+
+										<p>[#1543#]</p>
+									</div>
+								</div>
+
+								<div class="embed-responsive embed-responsive-16by9"><iframe id="promo1" width="320" height="240" src="https://www.youtube.com/embed/b9Cbh7WyRds?showinfo=0&enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allowfullscreen=""></iframe></div>
+							</div>
+						</div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div id="stepsbar-wrap" class="[[if?&is=`[+flagForm+]:in:0,1` &then=`hidden`]]">
+      <div id="stepsbar" class="stepsbar">
+
+        <ol>
+          <li role="presentation" class="[[if?&is=`[+flagForm+]:=:0:or:[+flagForm+]:=:1` &then=`active` &else=`success`]]">
+
+            <a class="[[if?&is=`[+flagForm+]:=:0:or:[+flagForm+]:=:1` &then=`` &else=`disabled`]]" href="#home" aria-controls="home" role="tab" data-toggle="tab" id="li_a_1">[#25#]</a>
+          </li>
+          <li class="[[if?&is=`[+flagForm+]:=:2` &then=`active` &else=`[[if?&is=`[+flagForm+]:=:0:or:[+flagForm+]:=:1` &then=`` &else=`success`]]`]]">
+            <a class="[[if?&is=`[+flagForm+]:>=:2` &then=`` &else=`disabled`]]" href="#profile" id="li_a_2">[#30#]</a>
+          </li>
+          <li class="[[if?&is=`[+flagForm+]:=:3` &then=`active` &else=``]]">
+            <a class="[[if?&is=`[+flagForm+]:=:3` &then=`` &else=`disabled`]]" href="#messages" id="li_a_3">[#45#]</a>
+          </li>
+
+          <li class="disabled">
+            <a class="disabled">[#917#]</a>
+          </li>
+        </ol>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="[[if?&is=`[+flagForm+]:in:0,1` &then=`hidden`]]">
+    <!-- Tab panes -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="tab-content tab-content--registration col-md-8">
+          <!--<div role="tabpanel" class="tab-pane [[if?&is=`[+flagForm+]:=:0:or:[+flagForm+]:=:1` &then=`active` &else=``]]" id="home">
+<div class="contacts-form--holder">
+
+<form id="js-form-1" name="js-form-1" action="[~~17~~]" method="post" class="form js_validate" onSubmit="return false;">
+<div class="form-wr">
+
+<div class="form-group">
+<div class="form-info">
+<img src="assets/images/ico-question.svg" alt="">
+</div>
+<div class="help-tooltip-data">[#448#]</div>
+<label for="phone" class="form-label">[#27#]</label>
+<div class="form-control--wr">
+
+<input name="reg[flagForm]" id="flagForm" type="hidden" value="[+flagForm+]">
+<input name="reg[codeReg]" id="regCodereg" type="hidden" value="[*codeReg*]">
+<input name="reg[phone]" id="phone" type="tel" class="form-control js-operator-number" data-validate="phone"
+value="[*phone*]" placeholder="+380 " onKeyUp="onKeyUpPhone('phone');" required
+[[if?&is=`[+flagForm+]:=:0` &then=`` &else=`readonly`]]
+[[if?&is=`[+flagForm+]:=:0:and:[*codeReg*]:empty` &then=`` &else=`readonly`]]>
+
+<span class="error_text">[#489#]</span>
+
+
+
+
+
+
+
+</div>
+<div class="captcha-wrapper form-group [[if?&is=`[+flagForm+]:=:0:and:[*codeReg*]:empty` &then=`` &else=`hidden`]]">
+<br><span class="form-label">[#898#]:</span>
+<div class="captcha-wrapper">
+<div class="g-recaptcha" data-sitekey="[*ReCaptcha_sitekey*]" data-callback="onReCaptchaVerify" data-expired-callback="onReCaptchaExpired"></div>
+
+<span id="errorCaptcha" class="error-text hidden">[#897#]</span>
+<div class="btn-wr--inline btn-wr--captcha">
+<span class="help-block">
+[[if?&is=`[*codeReg*]:empty` &then=`` &else=`[#681#].`]]
+</span>
+<button id="buttonGetCode" class="btn btn-personal btn-sm" role="button" data-toggle="modal" data-target="#code-modal"
+onclick='onClickGetCode();'
+[[if?&is=`[*codeReg*]:=:''` &then=`` &else=`disabled`]]>
+[#606#]
+</button>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="form-group">
+<div class="form-info">
+<img src="assets/images/ico-question.svg" alt="">
+</div>
+<div class="help-tooltip-data">[#449#]</div>
+<label for="email" class="form-label">[#29#]</label>
+<div class="form-control--wr">
+<input name="reg[email]" id="email" type="email" value="[*email*]" class="form-control" required
+data-validate="email" autocomplete="off" placeholder="test@gmail.com"
+[[if?&is=`[*codeReg*]:empty` &then=`disabled`]]>
+
+
+<span class="error_text">[#490#]</span>
+</div>
+</div>
+
+<div class="form-group [[if?&is=`[+flagForm+]:!=:0` &then=`hidden`]]">
+<div class="form-info">
+<img src="assets/images/ico-question.svg" alt="">
+</div>
+<div class="help-tooltip-data">[#480#]</div>
+<label for="password" class="form-label">[#195#]</label>
+<div class="form-control--wr">
+<input name="reg[password]" id="password" type="password" value="[*password*]"
+class="form-control" data-validate="pass" autocomplete="false" placeholder="[#614#]"
+[[if?&is=`[+flagForm+]:=:0` &then=`required`]]
+[[if?&is=`[*codeReg*]:empty` &then=`disabled`]]>
+
+
+<span class="error_text">[#480#]</span>
+</div>
+</div>
+
+<div class="form-group [[if?&is=`[+flagForm+]:!=:0` &then=`hidden`]]">
+<div class="form-info">
+<img src="assets/images/ico-question.svg" alt="">
+</div>
+<div class="help-tooltip-data">[#481#]</div>
+<label for="repeat-password" class="form-label">[#145#]</label>
+<div class="form-control--wr">
+<input name="reg[password2]" id="repeat-password" type="password" value="[*password2*]"
+class="form-control" data-validate="pass" autocomplete="off" placeholder="[#615#]"
+[[if?&is=`[+flagForm+]:=:0` &then=`required`]]
+[[if?&is=`[*codeReg*]:empty` &then=`disabled`]]>
+
+
+<span class="error_text">[#481#]</span>
+</div>
+</div>
+
+<div class="form-group [[if?&is=`[+flagForm+]:!=:0` &then=`hidden`]]">
+<div class="form-info">
+<img src="assets/images/ico-question.svg" alt="">
+</div>
+<div class="help-tooltip-data">[#875#]. [#876#]</div>
+<label for="PromoCode" class="form-label">[#875#]</label>
+<div class="form-control--wr">
+<input name="reg[PromoCode]" id="PromoCode" type="text" value="[*PromoCode*]"
+class="form-control" data-validate="" autocomplete="off" placeholder="[#877#]"
+[[if?&is=`[*codeReg*]:empty` &then=`disabled`]]>
+
+
+<span class="error_text">[#875#]. [#876#]</span>
+</div>
+</div>
+
+<div class="form-btn--wr">
+
+<button type="button" class="btn btn-success js-btn-success btn-success-arrow"
+onclick='if (validate($(this).parents(".js_validate"))) onClickSubmitReg("js-form-1", "");'
+[[if?&is=`[*codeReg*]:empty` &then=`disabled`]]>[#346#]
+</button>
+</div>
+<span class="error-text">[!api_error!]</span>
+</div>
+
+</form>
+</div>
+</div>-->
+          <div role="tabpanel" class="tab-pane [[if?&is=`[+flagForm+]:=:2` &then=`active` &else=``]]" id="profile">
+            <div class="contacts-form--holder">
+
+              <form id="js-form-2" action="[~~17~~]" method="POST" class="form js_validate" autocomplete="off" onSubmit="return false;">
+                <div class="form-wr">
+                  <div class="form-heading">[#1181#]</div>
+                  <div class="registration-text">
+                    <span class="help-block">
+											<p>[#1182#]. </p>
+											<p>[#1183#].</p>
+										</span>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+
+                    <div class="help-tooltip-data">[#437#]</div>
+                    <label for="sername" class="form-label form-capitalize">[#33#]</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder">
+                        <input id="form2" name="reg2[formID]" type="hidden" value="2">
+                        <input id="sername" name="reg2[lastName]" type="text" value="[*lastName*]" class="form-text form-control form-capitalize" data-validate="cyrilic" required placeholder="Иванов">
+
+                        <span class="error_text">[#483#]</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#438#]</div>
+                    <label for="name" class="form-label">[#34#]</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small">
+                        <input id="name" name="reg2[firstName]" type="text" value="[*firstName*]" class="form-text form-control form-capitalize" data-validate="cyrilic" required placeholder="Иван">
+
+
+                        <span class="error_text">[#484#]</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#439#]</div>
+                    <label for="patronymic" class="form-label">[#35#]</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small">
+                        <input id="second-name" name="reg2[thirdName]" type="text" value="[*thirdName*]" class="form-text form-control form-capitalize" data-validate="cyrilic" required placeholder="Иванович">
+
+
+                        <span class="error_text">[#485#]</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#440#]</div>
+                    <label for="day" class="form-label">[#36#]</label>
+                    <div class="form-control--wr">
+
+                      <div id="divErrorDateBirthday" class="personal-table-holder personal-table-holder--justify">
+                        <div class="form-number-date">
+                          <div class="personal-table-holder">
+
+                            <input name="reg2[DateBirthday]" id="dateBirthday" type="hidden" value="[*bdate_day*]" required>
+                            <select name="reg2[bdate_day]" id="day" class="selectpicker-date-day" onChange="onChangeDate('Birthday');" required>
+															[[day_select? &day='[*bdate_day*]']]
+														</select>
+
+
+
+
+                            <span class="error_text">[#486#]</span>
+                          </div>
+                        </div>
+                        <div class="form-month-date">
+                          <div class="personal-table-holder">
+
+                            <select name="reg2[bdate_month]" id="month" class="selectpicker-date-month" onChange="onChangeDate('Birthday');" required>
+															[[month_select? &month='[*bdate_month*]']]
+														</select>
+
+
+                            <span class="error_text">[#487#]</span>
+                          </div>
+                        </div>
+                        <div class="form-number-date">
+                          <div class="personal-table-holder">
+
+                            <select name="reg2[bdate_year]" id="year" class="selectpicker-date-year" onChange="onChangeDate('Birthday');" required>
+															[[year_select? &Year='[*bdate_year*]' &minYear='[*minYear*]' &maxYear='[*maxYear*]']]
+														</select>
+
+
+                            <span class="error_text">[#488#]</span>
+                          </div>
+                        </div>
+                      </div>
+                      <span id="spanErrorDateBirthday" class="error-text  hidden">[#845#]</span>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+
+                    <div class="help-tooltip-data">[#447#]</div>
+                    <label for="inn" class="form-label">[#38#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small [[if?&is=`[*errorInnExist*]:=:1`&then=`has-error`]]">
+                        <input id="inn" name="reg2[inn]" data-validate="inn" type="text" value="[*inn*]" class="form-control form-control--spacing" required placeholder="1234554321">
+
+                        <span class="error_text">[#497#]</span>
+                        <span id="error_check_inn" class="error_text hidden">[#1305#]</span> [[if?&is=`[*errorInnExist*]:=:1`&then=`
+                        <span class="error-text">[#1306#]</span> `]]
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#622#]</div>
+                    <label class="form-label">[#37#]:</label>
+                    <div class="form-control--wr custom-radio-wr">
+
+                      <label class="custom-radio" for="old-passport">
+												<input type="radio" id="old-passport" name="reg2[passportType]" value="1" [[if?&is=`[*passportType*]:=:1`&then=`checked`]] onclick="onchangePassportType('1');">
+												<span>Старого образца</span>
+											</label>
+                      <label class="custom-radio" for="new-passport">
+												<input type="radio" id="new-passport" name="reg2[passportType]" value="2" [[if?&is=`[*passportType*]:=:2`&then=`checked`]] onclick="onchangePassportType('2');">
+												<span>ID-карта</span>
+											</label>
+
+                      <span class="error_text">[#000#]</span>
+
+                    </div>
+                  </div>
+
+                  <div class="form-group" id="passportType_1_2">
+
+                    <label class="form-label"></label>
+
+                    <div class="form-control--wr">
+
+                      <div id="passportType_1" class="passport-holder [[if?&is=`[*passportType*]:!=:1`&then=`hidden`]]">
+
+                        <div class="form-control--wr">
+                          <label for="passportSeries" class="form-label--child">[#352#]:</label>
+                          <div class="form-col-5">
+                            <div class="personal-table-holder">
+                              <input id="passportSeries" data-validate="passportSeries" name="reg2[passportSeries]" type="text" value="[*passportSeries*]" class="form-control" placeholder="[#1080#]" [[if?&is=`[*passportType*]:=:1`&then=`required`]]>
+                              <span class="error_text">[#493#]</span>
+                            </div>
+                          </div>
+
+                          <div class="form-col-5">
+                            <input id="passportNumber" data-validate="passportNumber" name="reg2[passportNumber]" type="text" value="[*passportNumber*]" class="form-control" placeholder="[#353#]" [[if?&is=`[*passportType*]:=:1`&then=`required`]]>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div id="passportType_2" class="passport-holder [[if?&is=`[*passportType*]:!=:2`&then=`hidden`]]">
+
+                        <div class="form-col-5">
+                          <label for="passportReestr" class="form-label--child">[#619#]:</label>
+                          <div class="personal-table-holder">
+                            <input id="passportReestr" name="reg2[passportReestr]" type="text" data-validate="passportReestr" value="[*passportReestr*]" class="form-control" placeholder="12345678-55555" [[if?&is=`[*passportType*]:=:2`&then=`required`]]>
+
+                            <span class="error_text">[#000#]</span>
+
+                          </div>
+                        </div>
+
+                        <div class="form-col-5">
+                          <label for="passportNumberDoc" class="form-label--child">[#620#]:</label>
+                          <div class="personal-table-holder">
+                            <input id="passportNumberDoc" name="reg2[passportNumberDoc]" type="text" data-validate="passportNumberDoc" value="[*passportNumberDoc*]" class="form-control" placeholder="123456789" [[if?&is=`[*passportType*]:=:2`&then=`required`]]>
+
+                            <span class="error_text">[#000#]</span>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#445#]</div>
+                    <label for="PassportIssuedBy" class="form-label">[#344#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder">
+                        PassportIssuedBy = *[*PassportIssuedBy*]*
+                        <textarea id="PassportIssuedBy" name="reg2[PassportIssuedBy]" class="form-control form-text form-capitalize" required placeholder="[#1199#]">[*PassportIssuedBy*]</textarea>
+
+                        <span class="error_text">[#495#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#819#]</div>
+                    <label for="PassportRegistrationDay" class="form-label">[#345#]:</label>
+                    <div class="form-control--wr">
+
+                      <div id="divErrorDatePassport" class="personal-table-holder personal-table-holder--justify">
+                        <div class="form-number-date">
+
+                          <div class="personal-table-holder">
+                            <input name="reg2[DatePassport]" id="datePassport" type="hidden" value="[*PassportRegistrationDay*]" required>
+                            <select name="reg2[PassportRegistrationDay]" id="PassportRegistrationday" class="selectpicker-date-day" onChange="onChangeDate('Passport');" required>
+															[[day_select? &day='[*PassportRegistrationDay*]']]
+														</select>
+
+
+                            <span class="error_text">[#446#]</span>
+                          </div>
+                        </div>
+                        <div class="form-month-date">
+                          <div class="personal-table-holder">
+
+                            <select name="reg2[PassportRegistrationMonth]" id="PassportRegistrationMonth" class="selectpicker-date-month" onChange="onChangeDate('Passport');" required>
+															[[month_select? &month='[*PassportRegistrationMonth*]']]
+														</select>
+
+                            <span class="error_text">[#446#]</span>
+                          </div>
+                        </div>
+                        <div class="form-number-date">
+                          <div class="personal-table-holder">
+
+                            <select name="reg2[PassportRegistrationYear]" id="PassportRegistrationYear" class="selectpicker-date-year" onChange="onChangeDate('Passport');" required>
+															[[year_select? &Year='[*PassportRegistrationYear*]' &minYear='[*minYearPassport*]' &maxYear='[*maxYearPassport*]']]
+														</select>
+
+                            <span class="error_text">[#446#]</span>
+                          </div>
+                        </div>
+                      </div>
+                      <span id="spanErrorDatePassport" class="error-text  hidden">[#845#]</span>
+                    </div>
+                  </div>
+
+                  <hr>
+
+
+
+                  <div class="form-heading">[#1184#]</div>
+                  <div class="registration-text">
+                    <span class="help-block">
+											<p>[#1185#]. </p>
+											<p>[#1186#] <a tabindex="-1" href="[~~131~~]" target="_blank">[#1187#].</a></p>
+										</span>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#450#]</div>
+                    <label for="MaritalStatus" class="form-label">[#324#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder">
+                        <select name="reg2[MaritalStatus]" id="MaritalStatus" class="selectpicker" required>
+													[[maritalStatus_select? &MaritalStatus='[*MaritalStatus*]']]
+												</select>
+
+                        <span class="error_text">[#498#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#451#]</div>
+                    <label for="Education" class="form-label">[#331#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder">
+                        <select name="reg2[Education]" id="Education" class="selectpicker" required>
+													[[education_select? &Education='[*Education*]']]
+												</select>
+
+                        <span class="error_text">[#499#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+
+
+
+                  <div class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#584#]</div>
+                    <label for="suggest" class="form-label">[#583#]</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder">
+                        <input name="suggest" id="autocomplete" type="text" value="" class="form-control" placeholder="[#1198#]" onFocus="geolocate();">
+
+                        <span class="error_text">[#000#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group js-address hidden">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#453#]</div>
+                    <label for="obl" class="form-label">[#39#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small">
+                        <input name="reg2[oblast_hidden]" type="hidden" value="[*oblast*]">
+                        <input name="reg2[oblast]" id="obl" type="text" value="[*oblast*]" class="form-control form-capitalize" data-validate="cyrilic" required placeholder="Харьковская обл.">
+
+                        <span class="error_text">[#501#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group js-address hidden">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#454#]</div>
+                    <label for="obl_city" class="form-label">[#40#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small">
+                        <input name="reg2[city_hidden]" type="hidden" value="[*city*]">
+                        <input name="reg2[city]" id="obl_city" type="text" value="[*city*]" class="form-control form-capitalize" required placeholder="г. Харьков">
+
+
+                        <span class="error_text">[#502#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="form-group js-address hidden">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#455#]</div>
+                    <label for="adress" class="form-label">[#340#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small">
+                        <input id="adress" name="reg2[street]" type="text" value="[*street*]" class="form-control form-capitalize" required placeholder="ул. Сумская">
+
+                        <span class="error_text">[#503#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="form-group js-address hidden">
+                    <label for="House" class="form-label"></label>
+                    <div class="form-control--wr">
+
+
+                      <div class="personal-table-holder personal-table-holder--justify personal-table-holder--small">
+                        <div class="form-number-house">
+
+                          <label for="House" class="form-label--child">[#339#]:</label>
+                          <div class="personal-table-holder">
+                            <input id="House" name="reg2[House]" type="text" value="[*House*]" class="form-control" required placeholder="12">
+
+                            <span class="error_text">[#504#]</span>
+
+                          </div>
+                        </div>
+                        <div class="form-number-house">
+                          <label for="Building" class="form-label--child">[#341#]:</label>
+                          <div class="personal-table-holder">
+                            <input id="Building" name="reg2[Building]" type="text" value="[*Building*]" class="form-control" placeholder="14">
+
+                            <span class="error_text">[#504#]</span>
+
+                          </div>
+                        </div>
+                        <div class="form-number-house">
+                          <label for="Apartment" class="form-label--child">[#342#]:</label>
+                          <div class="personal-table-holder">
+                            <input id="Apartment" name="reg2[Apartment]" type="text" value="[*Apartment*]" class="form-control" placeholder="28">
+
+                            <span class="error_text">[#505#]</span>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#452#]</div>
+                    <label for="RealEstate" class="form-label">[#347#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small">
+                        <select name="reg2[RealEstate]" id="RealEstate" class="selectpicker" required>
+													[[realEstate_select? &RealEstate='[*RealEstate*]']]
+												</select>
+
+                        <span class="error_text">[#500#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr>
+
+                  <div class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+
+                    <div class="help-tooltip-data">[#531#]</div>
+                    <label for="address_same" class="form-label">[#1188#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder">
+                        <label for="address_same" class="agree">
+													<input type="checkbox" id="address_same" name="reg2[address_same]" value="1"
+														   [[if?&is=`[*address_same*]:=:1`&then=`checked`]]
+														   onchange="if ($(this).prop('checked')) $('#addr_fact').addClass('hidden'); else $('#addr_fact').removeClass('hidden');">
+													<span class="agree-emulator agree-emulator--margin">
+													</span> <span class="agree-text">[#1189#]</span>
+												</label>
+                        <span class="error_text">[#532#]</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="addr_fact" [[if?&is=`[*address_same*]:=:1`&then=` class="hidden" `]]>
+
+                    <!--<div class="form-group">
+<label for="id_checkbox">[#529#]:</label>
+</div>-->
+
+                    <div class="form-group">
+                      <div class="form-info">
+                        <img src="assets/images/ico-question.svg" alt="">
+                      </div>
+                      <div class="help-tooltip-data">[#584#]</div>
+                      <label for="fact_suggest" class="form-label">[#583#]</label>
+                      <div class="form-control--wr">
+                        <div class="personal-table-holder">
+                          <input name="fact_suggest" id="fact_autocomplete" type="text" value="" class="form-control" placeholder="[#1198#]" onFocus="geolocate();">
+
+                          <span class="error_text">[#000#]</span>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group js-address hidden">
+                      <div class="form-info">
+                        <img src="assets/images/ico-question.svg" alt="">
+                      </div>
+                      <div class="help-tooltip-data">[#453#]</div>
+                      <label for="fact_obl" class="form-label">[#39#]:</label>
+                      <div class="form-control--wr">
+                        <div class="personal-table-holder">
+                          <input name="reg2[fact_oblast_hidden]" type="hidden" value="[*fact_oblast*]">
+                          <input name="reg2[fact_oblast]" id="fact_obl" type="text" value="[*fact_oblast*]" class="form-control form-capitalize" data-validate="cyrilic" placeholder="[#39#]">
+
+                          <span class="error_text">[#501#]</span>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group js-address hidden">
+                      <div class="form-info">
+                        <img src="assets/images/ico-question.svg" alt="">
+                      </div>
+                      <div class="help-tooltip-data">[#454#]</div>
+                      <label for="fact_obl_city" class="form-label">[#40#]:</label>
+                      <div class="form-control--wr">
+                        <div class="personal-table-holder">
+                          <input name="reg2[fact_city_hidden]" type="hidden" value="[*fact_city*]">
+                          <input name="reg2[fact_city]" id="fact_obl_city" type="text" value="[*fact_city*]" class="form-control form-capitalize" placeholder="[#40#]">
+
+
+                          <span class="error_text">[#502#]</span>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group js-address hidden">
+                      <div class="form-info">
+                        <img src="assets/images/ico-question.svg" alt="">
+                      </div>
+                      <div class="help-tooltip-data">[#455#]</div>
+                      <label for="fact_adress" class="form-label">[#340#]:</label>
+                      <div class="form-control--wr">
+                        <div class="personal-table-holder">
+                          <input id="fact_adress" name="reg2[fact_street]" type="text" value="[*fact_street*]" class="form-control form-capitalize" placeholder="[#340#]">
+
+                          <span class="error_text">[#503#]</span>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group js-address hidden">
+                      <label for="fact_House" class="form-label"></label>
+                      <div class="form-control--wr">
+                        <div class="personal-table-holder personal-table-holder--justify personal-table-holder--small">
+                          <div class="form-number-house">
+                            <label for="fact_House" class="form-label--child">[#339#]:</label>
+                            <div class="personal-table-holder">
+                              <input id="fact_House" name="reg2[fact_House]" type="text" value="[*fact_House*]" class="form-control" placeholder="12">
+
+                              <span class="error_text">[#504#]</span>
+
+                            </div>
+                          </div>
+                          <div class="form-number-house">
+                            <label for="fact_Building" class="form-label--child">[#341#]:</label>
+                            <div class="personal-table-holder">
+                              <input id="fact_Building" name="reg2[fact_Building]" type="text" value="[*fact_Building*]" class="form-control" placeholder="14">
+
+                              <span class="error_text">[#504#]</span>
+
+                            </div>
+                          </div>
+                          <div class="form-number-house">
+                            <label for="fact_Apartment" class="form-label--child">[#342#]:</label>
+                            <div class="personal-table-holder">
+                              <input id="fact_Apartment" name="reg2[fact_Apartment]" type="text" value="[*fact_Apartment*]" class="form-control" placeholder="15">
+
+                              <span class="error_text">[#505#]</span>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#1190#]</div>
+                    <label for="periodResidence" class="form-label">[#1191#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--xs">
+                        <select name="reg2[periodResidence]" id="periodResidence" class="selectpicker" required>
+													[[periodResidence_select? &periodResidence='[*periodResidence*]']]
+												</select>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+                  <div class="form-btn--wr">
+
+                    <button type="button" class="btn btn-success js-btn-success btn-success-arrow" onclick='if (validate($(this).parents(".js_validate"))) onClickSubmitReg("js-form-2", "");'>[#346#] <img src="assets/images/registration-arrow.png" alt=""> [#45#]
+										</button>
+                  </div>
+
+                  <span class="error-text">[!api_error!]</span>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane [[if?&is=`[+flagForm+]:=:3` &then=`active` &else=``]]" id="messages">
+            <div class="contacts-form--holder">
+
+              <form id="js-form-3" action="[~~17~~]" method="POST" class="form js_validate" onSubmit="return false;">
+                <div class="form-wr">
+                  <p class="form-heading">[#1192#]</p>
+                  <div class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#458#]</div>
+
+                    <label for="BusynessType" class="form-label">[#318#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small">
+                        <input id="form3" name="reg2[formID]" type="hidden" value="3">
+                        <select name="reg2[BusynessType]" id="BusynessType" class="selectpicker" onchange="onChangeBusynessType();" required>
+													[[busynessType_select? &BusynessType='[*BusynessType*]']]
+												</select>
+
+                        <span class="error_text">[#506#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="tr_dolj" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#458#]</div>
+                    <label for="dolj" class="form-label">[#49#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small">
+                        [[-- <input id="form3" name="reg2[formID]" type="hidden" value="3"> --]]
+                        <select name="reg2[dolj]" id="dolj" class="selectpicker">
+													[[position_select? &dolj='[*dolj*]']]
+												</select>
+
+                        <span class="error_text">[#506#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div id="tr_nameUniversity" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#471#]</div>
+                    <label for="nameUniversity" class="form-label">[#384#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder">
+                        <input id="nameUniversity" name="reg2[nameUniversity]" type="text" value="[*nameUniversity*]" class="form-text form-control" placeholder="[#384#]">
+
+                        <span class="error_text">[#517#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="tr_Specializationfaculty" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#472#]</div>
+                    <label for="Specializationfaculty" class="form-label">[#385#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder">
+                        <select name="reg2[Specializationfaculty]" id="Specializationfaculty" class="selectpicker">
+													[[specializationfaculty_select? &Specializationfaculty='[*Specializationfaculty*]']]
+												</select>
+
+                        <span class="error_text">[#518#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="tr_qualification" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#473#]</div>
+                    <label for="qualification" class="form-label">[#396#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small">
+                        <select name="reg2[qualification]" id="qualification" class="selectpicker">
+													[[qualification_select? &qualification='[*qualification*]']]
+												</select>
+
+                        <span class="error_text">[#519#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  [[-- бюджет, или контракт - удалено
+                  <div id="tr_isBudget" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#474#]</div>
+                    <label for="isBudget" class="form-label">[#400#]?</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder">
+                        <label for="isBudgetYes" class="custom-radio">
+													<input name="reg2[isBudget]" id="isBudgetYes" type="radio" class="control-switch" value="1"
+														   [[if?&is=`[*isBudget*]:=:1` &then=`checked`]]> <span>[#401#]</span></label>
+                        <label for="isBudgetNo" class="custom-radio">
+													<input name="reg2[isBudget]" id="isBudgetNo" type="radio" class="control-switch" value="0"
+														   [[if?&is=`[*isBudget*]:=:0` &then=`checked`]]> <span>[#402#]</span></label>
+                      </div>
+                    </div>
+                  </div>
+                  --]] [[-- форма обучения - удалено
+                  <div id="tr_formTraining" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#859#]</div>
+                    <label for="formTraining" class="form-label">[#403#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small">
+                        <select name="reg2[formTraining]" id="formTraining" class="selectpicker">
+													[[formTraining_select? &formTraining='[*formTraining*]']]
+												</select>
+
+                        <span class="error_text">[#859#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+                  --]] [[-- Получаете первое высшее образование - удалено
+                  <div id="tr_isFirstEducation" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#475#]</div>
+                    <label for="isFirstEducation" class="form-label">[#408#]?</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder">
+
+                        <label for="isFirstEducationYes" class="custom-radio"><input name="reg2[isFirstEducation]" id="isFirstEducationYes" type="radio" class="control-switch" value="1"
+																											 [[if?&is=`[*isFirstEducation*]:=:1` &then=`checked`]]> <span>[#382#]</span></label>
+
+                        <label for="isFirstEducationNo" class="custom-radio"><input name="reg2[isFirstEducation]" id="isFirstEducationNo" type="radio" class="control-switch" value="0"
+																											[[if?&is=`[*isFirstEducation*]:=:0` &then=`checked`]]> <span>[#383#]</span></label>
+
+                      </div>
+                    </div>
+                  </div>
+                  --]] [[-- Когда вы начали учиться - удалено
+                  <div id="tr_beginLearn" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#857#]</div>
+                    <label for="beginLearnYear" class="form-label">[#409#]:</label>
+                    <div class="form-control--wr">
+                      <div class="form-col-6">
+                        <select name="reg2[beginLearn_year]" id="beginLearnYear" class="selectpicker">
+													[[year_select? &Year='[*beginLearn_year*]' &minYear='[*minYearBeginLearn*]' &maxYear='[*maxYearBeginLearn*]']]
+												</select>
+                        <span class="error_text">[#857#]</span>
+                      </div>
+                    </div>
+                  </div>
+                  --]]
+
+                  <div id="tr_groupDisability" class="form-group hidden">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#921#]</div>
+                    <label for="groupDisability" class="form-label">[#600#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--third">
+
+                        <label for="groupDisability_1" class="custom-radio"><input name="reg2[groupDisability]" id="groupDisability_1" type="radio" class="control-switch" value="1"
+																										   [[if?&is=`[*groupDisability*]:=:1` &then=`checked`]] ><span>1</span></label>
+
+                        <label for="groupDisability_2" class="custom-radio"><input name="reg2[groupDisability]" id="groupDisability_2" type="radio" class="control-switch" value="2"
+																										   [[if?&is=`[*groupDisability*]:=:2` &then=`checked`]] > <span>2</span></label>
+
+                        <label for="groupDisability_3" class="custom-radio"><input name="reg2[groupDisability]" id="groupDisability_3" type="radio" class="control-switch" value="3"
+																										   [[if?&is=`[*groupDisability*]:=:3` &then=`checked`]] > <span>3</span></label>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="tr_reasonDismissal" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#478#]</div>
+                    <label for="reasonDismissal" class="form-label">[#421#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder">
+                        <select name="reg2[reasonDismissal]" id="reasonDismissal" class="selectpicker">
+													[[reasonDismissal_select? &reasonDismissal='[*reasonDismissal*]']]
+												</select>
+                        <span class="icons-sprite icons-valide-icon form-control-feedback"></span>
+                        <span class="icons-sprite icons-icon-error form-control-feedback"></span>
+                        <span class="error_text">[#524#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  [[-- Планируете искать работу - удалено
+                  <div id="tr_planNewJob" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#479#]</div>
+                    <label for="planNewJob" class="form-label">[#422#]?</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder">
+                        <select name="reg2[planNewJob]" id="planNewJob" class="selectpicker">
+													[[planNewJob_select? &planNewJob='[*planNewJob*]']]
+												</select>
+
+                        <span class="error_text">[#525#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+                  --]]
+
+                  <div id="tr_company" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#460#]</div>
+                    <label for="company" class="form-label">[#47#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder">
+                        <input name="reg2[org]" id="company" type="text" value="[*org*]" class="form-control" placeholder="[#47#]">
+
+                        <span class="error_text">[#508#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="tr_workType" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#459#]</div>
+                    <label for="workType" class="form-label">[#299#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder">
+                        <select name="reg2[workType]" id="workType" class="selectpicker">
+													[[workType_select? &workType='[*workType*]']]
+												</select>
+
+                        <span class="error_text">[#507#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="tr_work_tel" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#462#]</div>
+                    <label for="work_tel" class="form-label">[#50#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small">
+                        <input name="reg2[work_tel]" id="work_tell" type="text" value="[*work_tel*]" class="form-control" placeholder="[#50#]">
+
+                        <span class="error_text">[#510#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  [[-- Стаж работы удален
+                  <div id="tr_vremyaorg" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#463#]</div>
+                    <label for="vremyaorg" class="form-label">[#52#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--xs">
+                        <select name="reg2[vremyaorg]" id="vremyaorg" class="selectpicker">
+													[[vremyaorg_select? &vremyaorg='[*vremyaorg*]']]
+												</select>
+
+                        <span class="error_text">[#511#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+                  --]]
+
+                  <!--										<hr>  -->
+
+                  <div id="tr_GrossMonthlyIncome" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#465#]</div>
+                    <label for="GrossMonthlyIncome" class="form-label">[#338#] ( [#86#] ):</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small">
+                        <input name="reg2[GrossMonthlyIncome]" id="GrossMonthlyIncome" type="text" value="[*GrossMonthlyIncome*]" data-validate="number_not_zero" class="form-control" placeholder="[#338#] [#86#]" [[if?&is=`[*mainSource*]:!=:9` &then=`required`]]>
+
+                        <span class="error_text">[#513#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="tr_mainSource" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#477#]</div>
+                    <label for="mainSource" class="form-label">[#410#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small">
+                        <select name="mainSourceStandard" id="mainSourceStandard" class="selectpicker hidden">
+													[[mainSource_select? &mainSource='[*mainSource*]']]
+												</select>
+                        <select name="reg2[mainSource]" id="mainSource" class="selectpicker" onchange="onChangeMainSource();" required>
+													[[mainSource_select? &mainSource='[*mainSource*]']]
+												</select>
+
+                        <span class="error_text">[#523#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="form-heading">[#1193#]</div>
+
+
+
+                  <!--<div id="tr_dolj" class="form-group">
+<label for="dolj" class="form-label">[#49#]:</label>
+<div class="form-control--wr">
+<div class="personal-table-holder">
+<select name="reg2[dolj]" id="dolj" class="selectpicker">
+[[position_select? &dolj='[*dolj*]']]
+</select>
+<div class="form-info">
+<img src="assets/images/icon_information.svg" alt="">
+</div>
+<span class="error_text">[#509#]</span>
+<div class="help-tooltip-data">[#461#]</div>
+</div>
+</div>
+</div>-->
+
+
+
+
+
+
+                  [[-- Следующее получение дохода удалено
+                  <div id="tr_nextPay" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#466#]</div>
+                    <label for="nextPay" class="form-label">[#360#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small">
+                        <select name="reg2[nextPay]" id="nextPay" class="selectpicker">
+													[[nextPay_select? &nextPay='[*nextPay*]']]
+												</select>
+
+                        <span class="error_text">[#514#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+                  --]] [[-- Как часто получаете доход удалено
+                  <div id="tr_oftenPay" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#467#]</div>
+                    <label for="oftenPay" class="form-label">[#361#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small">
+                        <select name="reg2[oftenPay]" id="oftenPay" class="selectpicker" [[if?&is=`[*mainSource*]:!=:9` &then=`required`]]>
+													[[oftenPay_select? &oftenPay='[*oftenPay*]']]
+												</select>
+
+                        <span class="error_text">[#515#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+                  --]]
+
+                  <div id="tr_costFamily" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#464#]</div>
+                    <label for="costFamily" class="form-label">[#359#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--xs">
+                        <select name="reg2[costFamily]" id="costFamily" class="selectpicker" [[if?&is=`[*mainSource*]:!=:9` &then=`required`]]>
+													[[costFamily_select? &costFamily='[*costFamily*]']]
+												</select>
+
+                        <span class="error_text">[#512#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="tr_sumPayLoans" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#469#]</div>
+                    <label for="sumPayLoans" class="form-label">[#363#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--xs">
+                        <select name="reg2[sumPayLoans]" id="sumPayLoans" class="selectpicker" required>
+													[[sumPayLoans_select? &sumPayLoans='[*sumPayLoans*]']]
+												</select>
+
+                        <span class="error_text">[#517#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr>
+                  <div class="form-heading">[#1490#]</div>
+
+                  <div id="tr_purposeLoan" class="form-group">
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#468#]</div>
+                    <label for="purposeLoan" class="form-label">[#362#]:</label>
+                    <div class="form-control--wr">
+                      <div class="personal-table-holder personal-table-holder--small">
+
+                        <input type="hidden" name="reg2[amount]" id="money-value-submit">
+                        <input type="hidden" name="reg2[days]" id="day-value-submit">
+
+                        <select name="reg2[purposeLoan]" id="purposeLoan" class="selectpicker" required>
+													[[purposeLoan_select? &purposeLoan='[*purposeLoan*]']]
+												</select>
+
+                        <span class="error_text">[#516#]</span>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  [[-- Получать информацию о новостях и акциях в MyCredit - временно отключили
+                  <div class="form-group">
+                    <label for="isRecInfo" class="agree agree--inverse">
+											<input type="checkbox" id="isRecInfo" [[if?&is=`[*isRecInfo*]:=:1`&then=`checked`]] name="reg2[isRecInfo]"><span class="agree-emulator">
+											</span> <span class="agree-text">[#894#] в MyCredit</span></label>
+                  </div>
+                  --]]
+
+                  <div class="form-group">
+                    <label for="isAgreedUseMyData" class="agree agree--inverse">
+											<input type="checkbox" id="isAgreedUseMyData" [[if?&is=`[*isAgreedUseMyData*]:=:1`&then=`checked`]] name="reg2[isAgreedUseMyData]">
+											<span class="agree-emulator"></span>
+											<span class="agree-text">[#1358#]</span>
+
+										</label>
+                    <div class="form-info">
+                      <img src="assets/images/ico-question.svg" alt="">
+                    </div>
+                    <div class="help-tooltip-data">[#1359#]</div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="agree" class="agree agree--inverse">
+											<input type="checkbox" id="agree" name="reg2[agree]" onchange="onChangeAgree();" >
+											<span class="agree-emulator"></span>
+											<span class="agree-text"><strong>[#180#]</strong> <br>
+												<small>([#813#] <br> <a href="[~~19~~]" target="_blank">[#814#]</a>)</small>
+											</span>
+										</label>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="text-right mobile-full-width">
+                      <button id="buttonCreateCredit" type="button" class="btn btn-success btn-success-arrow js-btn-success" disabled onclick='if (validate($(this).parents(".js_validate"))) onClickSubmitReg("js-form-3", "average_main");'>[#346#]
+											</button>
+                    </div>
+                  </div>
+                  <span class="error-text">[!api_error!]</span>
+                </div>
+              </form>
+              <span id="span-error-text" class="error-text">[!api_error!]</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="counter">
+            <div class="counter-wr">
+              <span class="counter-item counter-item-4">[*requestCounter_4*]</span>
+              <span class="counter-item counter-item-3">[*requestCounter_3*]</span>
+              <span class="counter-item counter-item-2">[*requestCounter_2*]</span>
+              <span class="counter-item counter-item-1">[*requestCounter_1*]</span>
+            </div>
+            [#1072#]
+          </div>
+          <div class="registration-video">
+            <div class="iframe-relative">
+              <img src="assets/images/oformit.jpg" alt="myCredit-video" class="numbers-gif">
+              <div class="numbers-play text-center" id="numbers-play">
+                <div class="numbers-play--holder">
+                  <img src="assets/images/issue-play.svg" width="98" height="98" alt="">
+
+                  <p>[#602#] в MyCredit</p>
+                </div>
+              </div>
+
+              <div class="embed-responsive embed-responsive-16by9"><iframe id="promo" width="320" height="240" src="https://www.youtube.com/embed/GgZh1U58qQQ?showinfo=0&enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allowfullscreen=""></iframe></div>
+            </div>
+          </div>
+          <div class="registration-slider">
+
+            <div class="stages">
+
+
+
+
+              <p class="registration-heading">[#886#]:</p>
+              <div class="calculator-table--wr">
+                <table class="calculator-table">
+                  <tr>
+                    <td class="calculator-td-heading">[#887#]:</td>
+                    <td class="calculator-take-sum"><span id="span_amount_large_[+prefix+]" class="loan-info--sum format-number"></span> [#86#]</td>
+                  </tr>
+                  <tr>
+                    <td class="calculator-td-take">[#888#]: </td>
+                    <td class="calculator-take-sum"><span id="span_amount_day_large_[+prefix+]" class="loan-days"></span> [#87#]</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="calculator-table--wr">
+                <table class="calculator-table">
+                  <tr>
+                    <td class="calculator-td-heading">[#655#]:</td>
+                    <td class="calculator-give-sum"><span id="span_amount_all_large_[+prefix+]" class="loan-info--sum format-number"> </span> [#86#]</td>
+                  </tr>
+                  <tr>
+                    <td class="calculator-td-give">До:</td>
+                    <td class="calculator-give-sum"><span class="loan-days" id="span_amount_all_end_large_[+prefix+]"> </span></td>
+                  </tr>
+                </table>
+
+              </div>
+
+
+            </div>
+            <a class="btn btn-success btn-success--inverse" id="slider_collapse" role="button" data-toggle="collapse" href="#reg-slider" aria-expanded="false" aria-controls="reg-slider">
+							[#1107#]
+						</a>
+
+            <div class="collapse collapse-registration" id="reg-slider">
+              <div class="well">
+                [[slider? &type='average' &prefix='main']]
+
+                <div class="btn-holder">
+                  <a role="button" data-toggle="collapse" href="#reg-slider" aria-expanded="false" aria-controls="reg-slider" class="btn btn-success" id="save_data_slider" onclick="submitSlider('average_main');">
+										<span>[#31#]</span><span class="icon-arrow-animate"></span>
+									</a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="registration-info">
+
+            <div class="registration-heading">[#1170#]</div>
+            <ul>
+              <li><svg version="1.1" id="Шар_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="19px" height="25.502px" viewBox="0 0 19 25.502" enable-background="new 0 0 19 25.502" xml:space="preserve">
+								<g>
+									<path opacity="0.2" fill="#00B181" d="M17.02,4.877h-2.032c-0.477,0-0.865-0.434-0.865-0.966V2.082c0-1.148-0.889-2.082-1.98-2.082
+																		  H1.98C0.889,0,0,0.934,0,2.082V23.42c0,1.148,0.889,2.082,1.98,2.082H17.02c1.092,0,1.98-0.934,1.98-2.082V6.959
+																		  C19,5.812,18.111,4.877,17.02,4.877z"/>
+									<g>
+										<path fill="#0054BB" d="M15.19,13.006H3.81c-0.308,0-0.558,0.25-0.558,0.558c0,0.308,0.25,0.558,0.558,0.558H15.19
+																c0.308,0,0.558-0.25,0.558-0.558C15.748,13.256,15.498,13.006,15.19,13.006z"/>
+										<path fill="#0054BB" d="M15.19,16.258H3.81c-0.308,0-0.558,0.25-0.558,0.558s0.25,0.558,0.558,0.558H15.19
+																c0.308,0,0.558-0.25,0.558-0.558S15.498,16.258,15.19,16.258z"/>
+										<path fill="#0054BB" d="M3.81,20.625H15.19c0.308,0,0.558-0.25,0.558-0.558s-0.25-0.558-0.558-0.558H3.81
+																c-0.308,0-0.558,0.25-0.558,0.558S3.502,20.625,3.81,20.625z"/>
+										<path fill="#0054BB" d="M10.312,6.503H3.81c-0.308,0-0.558,0.25-0.558,0.558s0.25,0.558,0.558,0.558h6.503
+																c0.309,0,0.559-0.25,0.559-0.558S10.621,6.503,10.312,6.503z"/>
+										<path fill="#0054BB" d="M19,6.959c0-1.147-0.889-2.082-1.98-2.082h-2.032c-0.477,0-0.865-0.434-0.865-0.966V2.082
+																c0-1.148-0.889-2.082-1.98-2.082H1.98C0.889,0,0,0.934,0,2.082V23.42c0,1.148,0.889,2.082,1.98,2.082H17.02
+																c1.092,0,1.98-0.934,1.98-2.082V6.959z M17.884,23.42c0,0.533-0.388,0.967-0.864,0.967H1.98c-0.477,0-0.864-0.434-0.864-0.967
+																V2.082c0-0.533,0.388-0.966,0.864-0.966h10.161c0.477,0,0.865,0.433,0.865,0.966v1.829c0,1.147,0.889,2.082,1.98,2.082h2.032
+																c0.477,0,0.864,0.433,0.864,0.966V23.42z"/>
+										<path fill="#0054BB" d="M15.19,9.755H3.81c-0.308,0-0.558,0.25-0.558,0.558c0,0.308,0.25,0.558,0.558,0.558H15.19
+																c0.308,0,0.558-0.25,0.558-0.558C15.748,10.005,15.498,9.755,15.19,9.755z"/>
+									</g>
+								</g>
+								</svg><a href="[~~18~~]" target="_blank">[#1171#]</a></li>
+              <li><svg version="1.1" id="Шар_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="19px" height="26.956px" viewBox="0 0 19 26.956" enable-background="new 0 0 19 26.956" xml:space="preserve">
+								<g>
+									<path opacity="0.2" fill="#00B181" d="M18.464,0H0.536C0.24,0,0,0.24,0,0.537v25.882c0,0.297,0.24,0.537,0.536,0.537h17.928
+																		  c0.295,0,0.535-0.24,0.535-0.537V0.537C18.999,0.24,18.759,0,18.464,0z"/>
+									<g>
+										<path fill="#0054BB" d="M18.464,0H0.536C0.24,0,0,0.24,0,0.537v25.882c0,0.297,0.24,0.537,0.536,0.537h17.928
+																c0.295,0,0.535-0.24,0.535-0.537V0.537C18.999,0.24,18.759,0,18.464,0z M17.927,25.882H1.073V1.074h16.854V25.882z"/>
+										<path fill="#0054BB" d="M9.872,11.506l2.24,0.862c0.062,0.023,0.129,0.035,0.193,0.035c0.207,0,0.402-0.121,0.49-0.32l0.201-0.455
+																l0.059,0.24c0.035,0.141,0.125,0.262,0.252,0.335c0.125,0.073,0.275,0.092,0.414,0.053l2.58-0.722
+																c0.145-0.042,0.264-0.139,0.332-0.271c0.07-0.131,0.08-0.284,0.031-0.425l-1.184-3.398c0.17-0.335,0.268-0.715,0.268-1.117
+																c0-1.354-1.1-2.458-2.457-2.458c-1.355,0-2.458,1.104-2.458,2.458c0,0.393,0.094,0.765,0.258,1.095l-1.518,3.365
+																c-0.061,0.136-0.062,0.289-0.007,0.426C9.624,11.345,9.733,11.453,9.872,11.506z M15.462,10.653l-1.496,0.42l-0.551-2.294
+																c0.459-0.022,0.889-0.174,1.248-0.417L15.462,10.653z M13.292,4.94c0.764,0,1.385,0.621,1.385,1.384s-0.621,1.384-1.385,1.384
+																c-0.762,0-1.385-0.621-1.385-1.384S12.53,4.94,13.292,4.94z M11.862,8.322c0.125,0.089,0.258,0.166,0.396,0.232l0.318,1.363
+																l-0.559,1.265l-1.231-0.475L11.862,8.322z"/>
+										<path fill="#0054BB" d="M3.271,3.973h4.67c0.297,0,0.538-0.241,0.538-0.537S8.238,2.898,7.941,2.898h-4.67
+																c-0.297,0-0.537,0.242-0.537,0.538S2.975,3.973,3.271,3.973z"/>
+										<path fill="#0054BB" d="M3.271,6.498h4.67c0.297,0,0.538-0.241,0.538-0.538C8.48,5.664,8.238,5.423,7.941,5.423h-4.67
+																c-0.297,0-0.537,0.24-0.537,0.536C2.734,6.256,2.975,6.498,3.271,6.498z"/>
+										<path fill="#0054BB" d="M3.271,9.02h4.67c0.297,0,0.538-0.24,0.538-0.536C8.48,8.188,8.238,7.946,7.941,7.946h-4.67
+																c-0.297,0-0.537,0.242-0.537,0.538S2.975,9.02,3.271,9.02z"/>
+										<path fill="#0054BB" d="M3.19,16.377H15.81c0.295,0,0.535-0.24,0.535-0.537c0-0.296-0.24-0.536-0.535-0.536H3.19
+																c-0.297,0-0.537,0.24-0.537,0.536C2.653,16.137,2.894,16.377,3.19,16.377z"/>
+										<path fill="#0054BB" d="M3.19,19.522H15.81c0.295,0,0.535-0.24,0.535-0.536c0-0.298-0.24-0.536-0.535-0.536H3.19
+																c-0.297,0-0.537,0.238-0.537,0.536C2.653,19.282,2.894,19.522,3.19,19.522z"/>
+										<path fill="#0054BB" d="M3.19,22.667h12.344c0.006,0,0.01-0.004,0.016-0.004c0.008,0,0.012,0.004,0.018,0.004h0.242
+																c0.295,0,0.535-0.24,0.535-0.537s-0.24-0.537-0.535-0.537h-0.242c-0.006,0-0.01,0.002-0.018,0.002
+																c-0.006,0-0.01-0.002-0.016-0.002H3.19c-0.297,0-0.537,0.24-0.537,0.537S2.894,22.667,3.19,22.667z"/>
+									</g>
+								</g>
+								</svg><a href="[~~318~~]" target="_blank">[#658#]</a></li>
+              <li><svg version="1.1" id="Шар_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20.001px" height="24.694px" viewBox="0 0 20.001 24.694" enable-background="new 0 0 20.001 24.694" xml:space="preserve">
+								<g>
+									<path opacity="0.2" fill="#00B181" d="M16.229,4.995l-5.99-1.767c-0.155-0.047-0.319-0.047-0.477,0l-5.99,1.767
+																		  C3.416,5.099,3.166,5.432,3.166,5.803v4.709c0,2.489,0.753,4.876,2.177,6.904c1.104,1.572,2.579,2.869,4.267,3.752
+																		  c0.122,0.064,0.257,0.098,0.391,0.098c0.135,0,0.269-0.033,0.392-0.098c1.686-0.883,3.162-2.18,4.267-3.752
+																		  c1.424-2.027,2.177-4.415,2.177-6.904V5.803C16.835,5.432,16.585,5.099,16.229,4.995z"/>
+									<g>
+										<g>
+											<path fill="#0054BB" d="M18.992,2.508l-8.038-2.37c-0.624-0.185-1.284-0.185-1.907,0l-8.039,2.37C0.414,2.683,0,3.238,0,3.856
+																	v6.656c0,3.082,0.917,6.047,2.653,8.579c1.692,2.472,4.05,4.373,6.815,5.499C9.641,24.659,9.82,24.694,10,24.694
+																	c0.181,0,0.36-0.035,0.531-0.104c2.766-1.126,5.124-3.027,6.816-5.499c1.735-2.531,2.653-5.497,2.653-8.579V3.856
+																	C20.001,3.238,19.586,2.683,18.992,2.508z M18.877,10.512c0,2.853-0.851,5.599-2.455,7.943c-1.569,2.289-3.752,4.051-6.314,5.093
+																	c-0.068,0.028-0.146,0.028-0.215,0c-2.562-1.042-4.744-2.804-6.312-5.093c-1.606-2.344-2.455-5.09-2.455-7.943V3.856
+																	c0-0.124,0.083-0.234,0.201-0.27l8.038-2.371C9.573,1.155,9.786,1.125,10,1.125c0.215,0,0.428,0.031,0.637,0.091l8.037,2.371
+																	c0.119,0.036,0.203,0.146,0.203,0.27V10.512z"/>
+										</g>
+									</g>
+									<g>
+										<g>
+											<path fill="#0054BB" d="M16.229,4.995l-5.99-1.767c-0.155-0.047-0.319-0.047-0.477,0l-5.99,1.767
+																	C3.416,5.099,3.166,5.432,3.166,5.803v4.709c0,2.489,0.753,4.876,2.177,6.904c1.104,1.572,2.579,2.869,4.267,3.752
+																	c0.122,0.064,0.257,0.098,0.391,0.098c0.135,0,0.269-0.033,0.392-0.098c1.686-0.883,3.162-2.18,4.267-3.752
+																	c1.424-2.027,2.177-4.415,2.177-6.904V5.803C16.835,5.432,16.585,5.099,16.229,4.995z M15.711,10.512
+																	c0,2.256-0.684,4.42-1.974,6.257c-0.973,1.385-2.263,2.535-3.737,3.334c-1.474-0.799-2.764-1.949-3.736-3.334
+																	c-1.291-1.837-1.973-4.001-1.973-6.257V6.014L10,4.329l5.711,1.685V10.512z"/>
+										</g>
+									</g>
+								</g>
+								</svg><a href="[~~131~~]" target="_blank">[#1172#]</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+{{FOOTER}}
+
+</div>
+
+{{SCRIPTS}}
+
+<script type="text/javascript">
+$(document).ready(function() {
+      //исполняемый код после загрузки документа
+      onChangeBusynessType(); // пересчет BusynessType
+      onChangeMainSource(); // пересчет MainSource
+      onKeyUpPhone('phone'); // пересчет tel1
+      [
+        [--onchangePassportType(); // пересчет типа паспорта --]]
+          onLoadSlider();
+          [
+            [--showModalRegistrationError();--]
+          ]
+        });
+</script>

@@ -63,6 +63,8 @@ gulp.task('scripts', function() {
 
 return  gulp.src([
            sourceDir + '/jquery-2.2.1.min.js',
+           sourceDir + '/popper.js',
+           sourceDir + '/bootstrap.js',
            sourceDir + '/bootstrap-select.js',
            sourceDir + '/jquery.maskedinput.min.js',
            sourceDir + '/bootstrap-slider.js',
@@ -73,8 +75,8 @@ return  gulp.src([
            sourceDir + '/jquery.countTo.js',
            sourceDir + '/jquery.knob.js',
            sourceDir + '/jquery.ui.widget.js',
+
            sourceDir + '/jquery.iframe-transport.js',
-           sourceDir + '/bootstrap.js',
            sourceDir + '/jquery.placeholder.min.js',
            sourceDir + '/owl.carousel.js',
            sourceDir + '/jcf.js',

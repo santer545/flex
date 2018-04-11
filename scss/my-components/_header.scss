@@ -11,6 +11,8 @@
   display: -ms-flex;
   display: flex;
   align-items: center;
+  border: 1px solid #e2e2e2;
+  transition: top 1s;
 
   @include media-breakpoint-down(lg) {
     height: 80px;
@@ -44,7 +46,7 @@
   }
   &-left {
     @include media-breakpoint-down(lg) {
-      padding-left: 15px;
+      padding-left: 10px;
       max-width: 20%;
     }
 
@@ -60,13 +62,8 @@
     align-items: center;
 
     @include media-breakpoint-down(lg) {
-      padding-right: 15px;
-    }
-
-    @include media-breakpoint-down(sm) {
       padding-right: 10px;
     }
-
   }
 
   &-language {
@@ -127,7 +124,8 @@
         margin: 0 10px;
       }
 
-      a {
+      a,
+      span {
         display: block;
         font-size: 1rem;
         font-family: $font-family-medium;
@@ -144,10 +142,7 @@
           border: 1px dashed #ef5350;
           color: #ef5350;
           border-radius: 30px;
-          padding: 5px 23px 5px 7px;
-          background-image: url(../images/icons/menu-star.png);
-          background-position: 90% 7px;
-          background-repeat: no-repeat;
+          padding: 5px 12px 5px 10px;
           line-height: 20px;
           transition: background-color .3s;
         }
@@ -210,7 +205,7 @@
   text-align: center;
   width: 50px;
   border-radius: 5px;
-  margin-left: 10px;
+  margin-left: 5px;
   border: none;
 
   svg {
@@ -222,3 +217,142 @@
     display: block;
   }
 }
+
+
+.sticky-calc {
+    position: fixed;
+    display: block;
+    right: 0;
+    left: 0;
+    margin-right: -20px;
+    margin-left: -20px;
+    padding: 51px 0 50px;
+    background-color: #f3f3f3;
+    z-index: 900;
+    transform: translate(0, -100%);
+    transition: all 1s;
+
+    &.active {
+        transform: translate(0, 0);
+    }
+
+    @include media-breakpoint-down(lg) {
+        padding-bottom: 0;
+    }
+
+
+    .calculator-right {
+        background-color: #fff;
+        border: 1px solid #e1e1e1;
+        padding: 35px 45px;
+        width: 55%;
+        @include media-breakpoint-down(lg) {
+            display: block;
+            margin: 0 auto;
+        }
+        @include media-breakpoint-down(md) {
+            width: 40%;
+            margin: 0;
+            padding: 20px;
+        }
+        @include media-breakpoint-down(sm) {
+            width: 100%;
+            padding: 20px;
+        }
+    }
+
+    .calculator-images {
+        display: none;
+    }
+
+    .calculator-row {
+      display: flex;
+      @include media-breakpoint-down(sm) {
+        display: block;
+      }
+    }
+
+    .calculator-left {
+        width: 45%;
+        border: none;
+        border: 1px solid #e1e1e1;
+        border-right: none;
+        @include media-breakpoint-down(lg) {
+            display: block;
+            width: 60%;
+            padding-left: 20px;
+        }
+        @include media-breakpoint-down(sm) {
+            padding-right: 0;
+            padding-left: 0;
+            width: 100%;
+        }
+    }
+
+    .credit-bottom,
+    .calculator-left .calculator-heading {
+        display: none;
+    }
+
+    .calculator-right .calculator-heading {
+        font-size: 20px;
+    }
+
+    .calculator-table--wr {
+        width: 50%;
+        float: left;
+        margin-right: 0;
+        @include media-breakpoint-down(sm) {
+            width: 66.666%;
+            margin-bottom: 20px;
+        }
+        &+.calculator-table--wr {
+            @include media-breakpoint-down(sm) {
+                width: 33.333%;
+            }
+        }
+    }
+
+    .calculator-td-heading {
+        min-width: 130px;
+    }
+
+
+    .slider-money--label {
+        width: 62%;
+        @include media-breakpoint-down(sm) {
+            width: 56%;
+        }
+    }
+    .slider-control--wr {
+        width: 38%;
+        @include media-breakpoint-down(sm) {
+            font-size: 16px;
+            width: 44%;
+        }
+    }
+  }
+
+  .popup-close {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 25px;
+    right: 45px;
+    background-color: transparent;
+    opacity: 1;
+    background-image: url(../images/close.png);
+    background-color: transparent;
+    border: none;
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    @include media-breakpoint-down(lg) {
+      top: 10px;
+    }
+  }

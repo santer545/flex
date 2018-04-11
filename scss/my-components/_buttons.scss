@@ -1,6 +1,16 @@
 .btn {
+  padding: 9px 25px;
   border-radius: 3px;
   transition: background-color 0.3s, color 0.3s;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+a.btn {
+  text-decoration: none;
 }
 
 .btn-primary {
@@ -63,15 +73,27 @@
     }
 
     &--content {
-        width: 37px;
-        height: 46px;
+        width: 42px;
+        height: 48px;
         padding: 0;
         font-size: 0;
-        background-size: 16px;
+        background-size: 19px;
+        background-position: 10px 12px;
+
+        @include media-breakpoint-down(sm) {
+          height: 45px;
+        }
     }
     &--get {
         background-image: none;
         padding: 11px 10px 10px;
+
+        @include media-breakpoint-down(sm) {
+            background-image: url('../images/icons/card.svg');
+            background-repeat: no-repeat;
+            background-size: 30px;
+            background-position: 5px 8px;
+          }
     }
 
     &.btn-profile {
@@ -131,6 +153,82 @@
     border: 1px solid hsla(0,0%,100%,.3);
   }
 }
+
+.btn-slider {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 0 20px;
+  height: 49px;
+  line-height: 49px;
+  color: #fff;
+  font-size: 1rem;
+  font-family: $font-family-medium;
+  background-color: map-get($colors, secondary);
+  border: none;
+  border-radius: 5px;
+  border-width: 0;
+  transition: background-color .3s;
+
+  &:hover {
+    color: #fff;
+    background-color: darken(map-get($colors, secondary), 5%);
+  }
+}
+
+.btn-personal {
+  background-color: map-get($colors, secondary);
+  color: map-get($colors, white-color);
+
+  &:hover {
+    background-color: darken(map-get($colors, secondary), 5%);
+    color: map-get($colors, white-color);
+  }
+}
+
+.btn-primary {
+  background-color: map-get($colors, primary-btn);
+  color: map-get($colors, white-color);
+
+  &:hover {
+    background-color: darken(map-get($colors, primary-btn), 5%);
+    color: map-get($colors, white-color);
+  }
+}
+
+.btn-arrow-animate {
+    position: relative;
+    overflow: hidden;
+    padding: 10px 30px;
+    background-color: map-get($colors, secondary);
+    color: map-get($colors, white-color);
+
+
+    &:hover {
+      background-color: darken(map-get($colors, secondary), 5%);
+      color: map-get($colors, white-color);
+      .icon-arrow-animate {
+          opacity: 1;
+          width: 32px;
+          margin-left: 20px;
+      }
+    }
+    span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .icon-arrow-animate {
+        display: inline-block;
+        opacity: 0;
+        width: 0;
+        height: 24px;
+        background-image: url('../images/fav-32.png');
+        background-repeat: no-repeat;
+        background-size: 32px 24px;
+        transition: all 0.3s;
+    }
+}
+
 
 .btn-lg {
   font-size: 1.25rem;

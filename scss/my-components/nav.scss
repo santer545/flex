@@ -1,1 +1,82 @@
+// breadcrumbs
 
+.B_crumbBox {
+    display: block;
+    padding: 0;
+    margin: 0 0 30px;
+    list-style: none;
+    padding: 8px 0;
+
+    @include media-breakpoint-down(md) {
+      margin-bottom: 10px;
+    }
+}
+
+.B_crumbBox>span {
+    float: left;
+    font-size: 0.8125rem;
+    position: relative;
+
+    &:not(:last-child) {
+        margin-right: 20px;
+
+        &:before {
+          content: "";
+          position: absolute;
+          right: -11px;
+          top: 7px;
+          width: 5px;
+          height: 5px;
+          border: 1px solid #007e5c;
+          border-top: none;
+          border-right: none;
+          -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+      }
+    }
+}
+
+
+.documents-tabs,
+.partners-tab {
+  .nav-tabs {
+     border-bottom: 1px solid #dde0eb;
+     margin: 0 -20px;
+     padding-left: 30px;
+     @include clearfix;
+
+     li {
+       a {
+        position: relative;
+        font: 1rem / 1.5 $font-family-roman;
+        border: none;
+        color: #363636;
+        border-bottom: none;
+        border-radius: 0;
+        padding: 7px 10px;
+        display: block;
+        white-space: normal;
+        text-decoration: none;
+
+        &:after {
+          content: "";
+          bottom: 0;
+          position: absolute;
+          height: 2px;
+          width: 100%;
+          left: 0;
+          right: 0;
+          transform: scale(0);
+          transition: transform .3s;
+          background-color: #0054bc;
+        }
+
+        &.active {
+          &:after {
+            transform: scale(1);
+          }
+        }
+       }
+     }
+   }
+}
